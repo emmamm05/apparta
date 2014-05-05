@@ -24,6 +24,7 @@
 /home/emma/projects/apparta/platforms/android/assets/www/cordova_plugins.js \
 /home/emma/projects/apparta/platforms/android/assets/www/res \
 /home/emma/projects/apparta/platforms/android/assets/www/icon.png \
+/home/emma/projects/apparta/platforms/android/assets/www/phonegap.js \
 /home/emma/projects/apparta/platforms/android/assets/www/spec/index.js \
 /home/emma/projects/apparta/platforms/android/assets/www/spec/lib \
 /home/emma/projects/apparta/platforms/android/assets/www/spec/helper.js \
