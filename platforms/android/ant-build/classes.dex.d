@@ -1,9 +1,9 @@
-/home/emma/projects/apparta/platforms/android/ant-build/classes.dex : \
-/home/emma/projects/apparta/platforms/android/ant-build/classes/com/phonegap/helloworld/R$attr.class \
-/home/emma/projects/apparta/platforms/android/ant-build/classes/com/phonegap/helloworld/R$string.class \
-/home/emma/projects/apparta/platforms/android/ant-build/classes/com/phonegap/helloworld/HelloWorld.class \
-/home/emma/projects/apparta/platforms/android/ant-build/classes/com/phonegap/helloworld/R$drawable.class \
-/home/emma/projects/apparta/platforms/android/ant-build/classes/com/phonegap/helloworld/BuildConfig.class \
-/home/emma/projects/apparta/platforms/android/ant-build/classes/com/phonegap/helloworld/R$xml.class \
-/home/emma/projects/apparta/platforms/android/ant-build/classes/com/phonegap/helloworld/R.class \
-/home/emma/projects/apparta/platforms/android/ant-build/dexedLibs/classes-615492db6de7abe4185831ed38586460.jar \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes.dex : \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes/com/apparta/mobile/R$attr.class \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes/com/apparta/mobile/R$string.class \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes/com/apparta/mobile/R$xml.class \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes/com/apparta/mobile/R.class \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes/com/apparta/mobile/BuildConfig.class \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes/com/apparta/mobile/R$drawable.class \
+/home/emma/Projects/apparta/platforms/android/ant-build/classes/com/apparta/mobile/Apparta.class \
+/home/emma/Projects/apparta/platforms/android/ant-build/dexedLibs/classes-6c2437241e355ccc2614e4d58ff72c06.jar \

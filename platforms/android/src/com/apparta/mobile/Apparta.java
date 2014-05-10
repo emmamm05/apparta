@@ -17,12 +17,12 @@
        under the License.
  */
 
-package com.phonegap.helloworld;
+package com.apparta.mobile;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
 
-public class HelloWorld extends CordovaActivity 
+public class Apparta extends CordovaActivity 
 {
     @Override
     public void onCreate(Bundle savedInstanceState)
