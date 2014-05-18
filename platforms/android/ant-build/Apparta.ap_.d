@@ -45,6 +45,7 @@
 /home/bairon/workspace/apparta/platforms/android/assets/www/css/animation.css \
 /home/bairon/workspace/apparta/platforms/android/assets/www/css/fontello.css \
 /home/bairon/workspace/apparta/platforms/android/assets/www/css/mobile-angular-ui-desktop.min.css \
+/home/bairon/workspace/apparta/platforms/android/assets/www/css/angular-slider.css \
 /home/bairon/workspace/apparta/platforms/android/assets/www/css/fontello-ie7-codes.css \
 /home/bairon/workspace/apparta/platforms/android/assets/www/css/mobile-angular-ui-base.css \
 /home/bairon/workspace/apparta/platforms/android/assets/www/css/mobile-angular-ui-desktop.css \
@@ -163,4 +164,5 @@
 /home/bairon/workspace/apparta/platforms/android/assets/www/js/controllers.js \
 /home/bairon/workspace/apparta/platforms/android/assets/www/js/mobile-angular-ui.min.js \
 /home/bairon/workspace/apparta/platforms/android/assets/www/js/app.js \
+/home/bairon/workspace/apparta/platforms/android/assets/www/js/angular-slider.min.js \
 /home/bairon/workspace/apparta/platforms/android/ant-build/AndroidManifest.xml \

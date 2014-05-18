@@ -58,11 +58,8 @@ app.controller('HomeCtrl', ['$scope', '$routeParams',
 
 app.controller('SearchCtrl', function($rootScope, $scope, analytics){
 
-  $scope.search = {payed: true};
-  $scope.rating = 5;
-    $scope.saveRatingToServer = function(rating) {
-      $window.alert('Rating selected - ' + rating);
-    };
+  $scope.search = {payed: true, rating: 3, location: 3};
+$scope.cost = 350
 });
 
 

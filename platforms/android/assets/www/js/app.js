@@ -78,6 +78,7 @@ app.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/carousel',  {templateUrl: "partials/carousel.html"});
 });
 */
+
 app.service('analytics', [
   '$rootScope', '$window', '$location', function($rootScope, $window, $location) {
     var send = function(evt, data) {
