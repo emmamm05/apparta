@@ -1,0 +1,27 @@
+
+	<div class="radio-group">
+	  <label ng-class="item.location==1 ? 'btn btn-primary' : 'btn btn-default'">
+		<i class="icon-school"></i>
+		<input type="radio"
+		       ng-model="item.location"
+		       value="1" >1 Km
+	  </label>
+	  <label ng-class="item.location==5 ? 'btn btn-primary' : 'btn btn-default'">
+		<i class="icon-bicycle"></i>
+		<input type="radio"
+		       ng-model="item.location"
+		       value="5" >5 Km
+	  </label>
+	  <label ng-class="item.location==10 ? 'btn btn-primary' : 'btn btn-default'">
+		<i class="icon-bus"></i>
+		<input type="radio"
+		       ng-model="item.location"
+		       value="10" >10 Km
+	  </label>
+	  <label ng-class="search.item==20 ? 'btn btn-primary' : 'btn btn-default'">
+		<i class="icon-rail"></i>
+		<input type="radio"
+		       ng-model="item.location"
+		       value="20" >20 Km
+	  </label>
+	</div>

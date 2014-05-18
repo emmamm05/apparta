@@ -12,13 +12,13 @@ app.config(['$routeProvider',
         templateUrl: 'partials/results.html',
         controller: 'ResultsCtrl'
       }).
-      when('/scroll', {
-        templateUrl: 'partials/scroll.html',
-        controller: 'ScrollCtrl'
+      when('/agregar-apartamento', {
+        templateUrl: 'partials/agregar-apartamento.html',
+        controller: 'AgregarApartamentoCtrl'
       }).
-      when('/search', {
-        templateUrl: 'partials/search.html',
-        controller: 'SearchCtrl'
+      when('/buscar-apartamento', {
+        templateUrl: 'partials/buscar-apartamento.html',
+        controller: 'BuscarApartamentoCtrl'
       }).
       when('/home', {
         templateUrl: 'partials/home.html',
@@ -67,6 +67,8 @@ app.directive('fundooRating', function () {
       }
     }
   });
+
+
 /*
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/',          {templateUrl: "partials/home.html"});

@@ -60,16 +60,6 @@ app.controller('HomeCtrl', ['$scope', '$routeParams',
   }]);
 
 
-
-app.controller('SearchCtrl', function($rootScope, $scope, analytics){
-
-  $scope.search = {payed: true, rating: 3};
-  $scope.cost = 350
-});
-
-
-
-
 app.controller('ScrollCtrl', function($rootScope, $scope, analytics){
 
   $rootScope.$on("$routeChangeStart", function(){
