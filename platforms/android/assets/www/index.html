@@ -9,25 +9,25 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
   <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
-
-  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
   
   <link rel="stylesheet" href="css/mobile-angular-ui-base.min.css" />
   <link rel="stylesheet" href="css/mobile-angular-ui-desktop.min.css" />
+  <link rel="stylesheet" href="css/fontello.css" />
   <link rel="stylesheet" href="demo.css" />
+  <link rel="stylesheet" href="css/apparta.css" />
   
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular-touch.min.js"></script>
-	<script src="js/mobile-angular-ui.min.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/mobile-angular-ui.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers.js"></script>
 
 </head>
 
-<body ng-app="Apparta" ng-controller="MainController">
+<body ng-app="Apparta">
 
   <div ng-include="'partials/sidebar.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar"></div>
 
@@ -36,22 +36,23 @@
     <div class="navbar navbar-app navbar-absolute-top">
 
         <div class="navbar-brand navbar-brand-center" yield-to="title">
-          <span>Mobile Angular UI</span>
+          <span>Inicio</span>
         </div>
 
         <div class="btn-group pull-left">
           <div ng-click="toggle('mainSidebar')" class="btn btn-navbar sidebar-toggle">
-            <i class="fa fa-bars"></i> Menu
+            <i class="icon-menu"></i> Menu
           </div>
         </div>
 
         <div class="btn-group pull-right" yield-to="navbarAction">
-          <div ng-click="toggle('rightSidebar')" class="btn btn-navbar">
-            <i class="fa fa-comment"></i> Chat
+          <div ng-click="toggle('partials/rightSidebar')" class="btn btn-navbar">
+            <i class="icon-search"></i> Search
           </div>
         </div>
     </div>
 
+<!--
     <div class="navbar navbar-app navbar-absolute-bottom">
       <div class="btn-group justified">
         <a href="http://mobileangularui.com/" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i> Docs</a>
@@ -60,10 +61,10 @@
 
       </div>
     </div>
-
+-->
     <div class="app-body" ng-class="{loading: loading}">
         <div ng-show="loading" class="app-content-loading">
-          <i class="fa fa-spinner fa-spin loading-spinner"></i>
+          <i class="icon-spinner loading-spinner"></i>
         </div>
         <ng-view class="app-content" ng-hide="loading"></ng-view>
       </div>

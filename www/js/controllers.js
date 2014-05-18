@@ -1,5 +1,71 @@
 /* Controllers */
-app.controller('MainController', function($rootScope, $scope, analytics){
+
+app.controller('ResultsCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+	$scope.results = [
+	    {'title': 'Barato y espacioso',
+	     'stars': '3,2',
+	     'area': '220',
+	     'bethroom': '5',
+	     'gender': 'male',
+	     'location': '1,8',
+	     'descrip': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'img': 'http://lorempixel.com/250/200/city/'},
+	    {'title': 'Para primeros ingresos',
+	     'stars': '5,0',
+	     'area': '220',
+	     'bethroom': '3',
+	     'gender': 'unisex',
+	     'location': '2,1',
+	     'descrip': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'img': 'http://lorempixel.com/250/210/city/'},
+	    {'title': 'Oferta!!',
+	     'stars': '1,5',
+	     'area': '320',
+	     'bethroom': '4',
+	     'gender': 'female',
+	     'location': '7,2',
+	     'descrip': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'img': 'http://lorempixel.com/250/215/city/'}
+	  ];
+  }]);
+
+app.controller('HomeCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+      $scope.popular_apartments = [
+	    {'title': 'Nexus S',
+	     'img': 'http://lorempixel.com/250/205/city/'},
+	    {'title': 'Motorola XOOM',
+	     'img': 'http://lorempixel.com/250/210/city/'},
+	    {'title': 'Nexus S',
+	     'img': 'http://lorempixel.com/250/205/city/'},
+	    {'title': 'MOTOROLA XOOM™',
+	     'img': 'http://lorempixel.com/250/200/city/'}
+	  ];
+	$scope.recent_apartments = [
+	    {'title': 'Nexus S',
+	     'img': 'http://lorempixel.com/250/205/city/'},
+	    {'title': 'Motorola XOOM',
+	     'img': 'http://lorempixel.com/250/210/city/'},
+	    {'title': 'Nexus S',
+	     'img': 'http://lorempixel.com/250/205/city/'},
+	    {'title': 'MOTOROLA XOOM™',
+	     'img': 'http://lorempixel.com/250/200/city/'}
+	  ];
+  }]);
+
+
+
+app.controller('SearchCtrl', function($rootScope, $scope, analytics){
+
+  $scope.search = {payed: true, rating: 3};
+$scope.cost = 350
+});
+
+
+
+
+app.controller('ScrollCtrl', function($rootScope, $scope, analytics){
 
   $rootScope.$on("$routeChangeStart", function(){
     $rootScope.loading = true;
@@ -48,3 +114,5 @@ app.controller('MainController', function($rootScope, $scope, analytics){
   ];
 
 });
+
+

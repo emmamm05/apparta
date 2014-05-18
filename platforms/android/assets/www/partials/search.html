@@ -1,0 +1,90 @@
+<div content-for="title">
+  <span>Buscar apartas</span>
+</div>
+
+
+<div class="scrollable">
+ <div class="scrollable-content section">
+   
+   <form action="" id="">
+
+	<!-- location -->
+	<label class="col-xs-3 col-sm-2 col-lg-1">Cercan&iacute;a con el TEC</label>
+	<div class="col-xs-9 col-sm-10 col-lg-11">
+		<div class="radio-group">
+		  <label ng-class="search.location==1 ? 'btn btn-primary' : 'btn btn-default'">
+			<i class="icon-school"></i>
+			<input type="radio"
+			       ng-model="search.location"
+			       value="1" >1 Km
+		  </label>
+		  <label ng-class="search.location==5 ? 'btn btn-primary' : 'btn btn-default'">
+			<i class="icon-bicycle"></i>
+			<input type="radio"
+			       ng-model="search.location"
+			       value="5" >5 Km
+		  </label>
+		  <label ng-class="search.location==10 ? 'btn btn-primary' : 'btn btn-default'">
+			<i class="icon-bus"></i>
+			<input type="radio"
+			       ng-model="search.location"
+			       value="10" >10 Km
+		  </label>
+		  <label ng-class="search.location==20 ? 'btn btn-primary' : 'btn btn-default'">
+			<i class="icon-rail"></i>
+			<input type="radio"
+			       ng-model="search.location"
+			       value="20" >20 Km
+		  </label>
+		</div>
+	</div>
+	<!-- .location -->
+
+	<!-- ranking -->
+	<label class="col-xs-3 col-sm-2 col-lg-1">Ranking m&iacute;nimo</label>
+	<div class="col-xs-9 col-sm-10 col-lg-11">
+  		<div fundoo-rating rating-value="rating" max="5" on-rating-selected="saveRatingToServer(rating)"></div>
+	</div>
+	<!-- .ranking -->
+
+     <div bs-panel title="Servicios incluidos">
+
+       <switch
+        bs-form-control
+        ng-change="switchChanged()"
+        ng-model="search.garage"
+        ng-click="switchClicked()"
+        label="Garage"
+        label-class="col-xs-3 col-sm-2 col-lg-1"
+        class="col-xs-9 col-sm-10 col-lg-11" 
+        >
+        </switch>
+
+	<switch
+        bs-form-control
+        ng-change="switchChanged()"
+        ng-model="search.muebles"
+        ng-click="switchClicked()"
+        label="Amueblado"
+        label-class="col-xs-3 col-sm-2 col-lg-1"
+        class="col-xs-9 col-sm-10 col-lg-11" 
+        >
+        </switch>
+     </div>
+
+
+     <div bs-panel title="Notes">
+       <textarea type="text" ng-model="search.mailing_address" label="Address" bs-form-control></textarea>
+     </div>
+      
+    <div bs-panel class="form-actions">
+      <div content-for="navbarAction" duplicate>
+        <button class="btn btn-primary">
+          Buscar
+        </button>
+      </div>
+    </div>
+   </form>
+
+ </div>
+</div>

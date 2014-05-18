@@ -1,0 +1,91 @@
+/*
+ * 
+ * GENERAL
+ *
+ */
+
+
+/*
+ * 
+ * SEARCH
+ *
+ */
+.radio-group i{
+	font-size: 24pt;
+	display: block;
+}
+.radio-group input{
+	display: none;
+}
+/*
+ * 
+ * RATING
+ *
+ */
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-size: 24pt;
+  cursor: pointer;
+}
+
+.rating .filled {
+  color: #ffcd02;
+}
+
+
+
+
+
+
+
+
+/*
+ * 
+ * LIST APARTAS
+ *
+ */
+.list-inline>li {
+    padding: 0;
+}
+.property-item {
+    background-color: #fff !important;
+    -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    border: 1px solid #ededed;
+	padding: 10px!important;
+	margin: 0px!important;
+}
+.property-list {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.property-descrip {
+	padding-top: 10px !important;
+}
+.fnt-smaller {
+    font-size: .9em;
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.list-inline {
+    color: #535353;
+	 margin: 0!important;
+}
+.img-list-apartas {
+	max-width:100%;
+	height:auto;
+}
