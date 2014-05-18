@@ -58,8 +58,11 @@ app.controller('HomeCtrl', ['$scope', '$routeParams',
 
 app.controller('SearchCtrl', function($rootScope, $scope, analytics){
 
-  $scope.search = {payed: true, rating: 3};
-$scope.cost = 350
+  $scope.search = {	gender: 'unisex',  	
+			rating: 3, 
+			location: 5,
+		};
+  $scope.cost = 350;
 });
 
 

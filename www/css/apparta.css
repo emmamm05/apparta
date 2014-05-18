@@ -3,18 +3,46 @@
  * GENERAL
  *
  */
+.panel-heading {
+    border-bottom: 0;
+    border-top: 1px solid #DDD;
+}
+.panel {
+    margin-bottom: 0;
+}
+.section {
+    padding-top: 0;
+    margin-top: 0;
+}
 
+.btn-default.active, 
+.btn-default:active, 
+.btn-default:focus, 
+.btn-default:hover, 
+.open .dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #ffffff;
+    border-color: #ADADAD;
+}
 
 /*
  * 
  * SEARCH
  *
  */
-.radio-group i{
+.radio-group,
+.checkbox-group{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+.radio-group i,
+.checkbox-group i{
 	font-size: 24pt;
 	display: block;
 }
-.radio-group input{
+.radio-group input,
+.checkbox-group input{
 	display: none;
 }
 /*
@@ -29,7 +57,8 @@
 }
 
 ul.rating {
-  display: inline-block;
+  display: block;
+  text-align: center;
 }
 
 .rating li {

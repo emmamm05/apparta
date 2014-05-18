@@ -1,4 +1,5 @@
 var app = angular.module('Apparta', [
+  "uiSlider",
   "ngRoute",
   "ngTouch",
   "mobile-angular-ui"
