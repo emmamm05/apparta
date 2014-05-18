@@ -8,21 +8,25 @@ app.service('ApartamentosAPIService', [
 	 return Usuario.get({ apartamento_id: pApartamentoId });
     
     this.CREATE = function( pApartamento) {
-	 var usuario = new Usuario({
-	    nombre   = pApartamento.nombre;
-	    email    = pApartamento.email;
-	    oauth_id = pApartamento.oauth_id;
-	    edad     = pApartamento.edad;
-	    genero   = pApartamento.genero;
+	 var apartamento = new Apartamento({
+	    descripcion = pApartamento.descripcion;
+	    direccion  	= pApartamento.direccion;
+	    area 	= pApartamento.area;
+	    latitud   	= pApartamento.latitud;
+	    longitud   	= pApartamento.longitud;
+	    cercaniaTEC = pApartamento.cercaniaTEC;
 	 });
     }
     
     this.UPDATE = function( pApartamento ) {
        var usuario = Usuario.get( { pApartamento: pApartamentoId }, function()
        {
-	    usuario.nombre = pApartamento.nombre;
-	    usuario.edad   = pApartamento.edad;
-	    usuario.genero = pApartamento.genero;
+	    usuario.descripcion = pApartamento.descripcion;
+	    usuario.direccion  	= pApartamento.direccion;
+	    usuario.area 	= pApartamento.area;
+	    usuario.latitud   	= pApartamento.latitud;
+	    usuario.longitud   	= pApartamento.longitud;
+	    usuario.cercaniaTEC = pApartamento.cercaniaTEC;
        });
     }
     
