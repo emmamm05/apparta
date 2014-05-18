@@ -9,11 +9,11 @@ app.service('UsuariosAPIService', [
     
     this.CREATE = function( pUsuario) {
 	 var usuario = new Usuario({
-	    nombre = pUsuario.nombre;
-	    email = pUsuario.email;
+	    nombre   = pUsuario.nombre;
+	    email    = pUsuario.email;
 	    oauth_id = pUsuario.oauth_id;
-	    edad = pUsuario.edad;
-	    genero = pUsuario.genero;
+	    edad     = pUsuario.edad;
+	    genero   = pUsuario.genero;
 	 });
     }
     
@@ -21,7 +21,7 @@ app.service('UsuariosAPIService', [
        var usuario = Usuario.get({usuarioId: pUsuarioId }, function()
        {
 	    usuario.nombre = pUsuario.nombre;
-	    usuario.edad = pUsuario.edad;
+	    usuario.edad   = pUsuario.edad;
 	    usuario.genero = pUsuario.genero;
        });
     }
