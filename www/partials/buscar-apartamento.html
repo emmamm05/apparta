@@ -13,14 +13,14 @@
 			label=""
 			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
 			type="number" 
-			ng-model="item.price.min" 
+			ng-model="item.min_mensualidad" 
 			bs-form-control="">
 		</input>
 		<input 	placeholder="Maximo"
 			label=""
 			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
 			type="number" 
-			ng-model="item.price.max" 
+			ng-model="item.max_mensualidad" 
 			bs-form-control="">
 		</input>
 	</div>
@@ -32,7 +32,7 @@
 	 
 	<!-- ranking -->
 	<div bs-panel title="Ranking m&iacute;nimo" class="form-panel">
-		<div fundoo-rating rating-value="item.rating" max="5" on-rating-selected="saveRatingToServer(item.rating)"></div>
+		<div fundoo-rating rating-value="item.calificacion" max="5" on-rating-selected="saveRatingToServer(item.calificacion)"></div>
 	</div>
 
 	<!-- services -->
@@ -51,7 +51,7 @@
 			label=""
 			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
 			type="number" 
-			ng-model="item.bedrooms" 
+			ng-model="item.habitaciones" 
 			bs-form-control="">
 		</input>
 	</div>

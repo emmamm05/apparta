@@ -6,18 +6,14 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
  
 app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-     $scope.item = {	gender: 	'unisex',  	
-			rating: 	3, 
-			location: 	5,
-			services: 	{}
+     $scope.item = {	sexo: 	'unisex'
 		};
   }]);
 
 app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-     $scope.item = {	gender: 	'unisex',  	
-			rating: 	3, 
-			location: 	5,
-			services: 	{}
+     $scope.item = {	sexo: 	'unisex',  	
+			calificacion: 	3, 
+			cercania_tec: 	5
 		};
   }]);

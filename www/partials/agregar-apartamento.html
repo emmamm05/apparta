@@ -1,5 +1,5 @@
 <div content-for="title">
-  <span>Agrrgar un aparta</span>
+  <span>Agregar un aparta</span>
 </div>
 
 
@@ -7,36 +7,46 @@
  <div class="scrollable-content section">
    
    <form action="" id="">
-	<!-- price -->
-	<div bs-panel title="Mensualidad" class="form-panel">
-		<input 	placeholder="Minimo"
-			label=""
-			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
-			type="number" 
-			ng-model="item.price.min" 
-			bs-form-control="">
-		</input>
-		<input 	placeholder="Maximo"
-			label=""
-			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
-			type="number" 
-			ng-model="item.price.max" 
-			bs-form-control="">
-		</input>
-	</div>
 
-	<!-- location -->
-	<div bs-panel title="Cercan&iacute;a al TEC" class="form-panel">
-		<div ng-include="'partials/appartment_form/location.html'"></div>    
-	</div>
-	 
-	<!-- ranking -->
-	<div bs-panel title="Ranking m&iacute;nimo" class="form-panel">
-		<div fundoo-rating rating-value="item.rating" max="5" on-rating-selected="saveRatingToServer(item.rating)"></div>
+	<!-- general -->
+	<div bs-panel title="Información general" class="form-panel">
+
+	       <input
+			bs-form-control
+			type="text" 
+			ng-model="item.titulo"
+			label="T&iacute;tulo" 
+			label-class="col-xs-3 col-sm-2 col-lg-1" 
+			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+			ng-maxlength="15"
+			ng-minlength="5"
+			placeholder="Elija un t&iacute;tulo creativo"
+	       />
+
+	       <input
+			bs-form-control
+			type="number" 
+			ng-model="item.mensualidad"
+			label="Mensualidad" 
+			label-class="col-xs-3 col-sm-2 col-lg-1" 
+			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+			placeholder="Precio de la mensualidad en colones"
+	       />
+
+		<input
+			bs-form-control
+			type="text" 
+			ng-model="item.direccion_fisica"
+			label="Direcci&oacute;n" 
+			label-class="col-xs-3 col-sm-2 col-lg-1" 
+			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+			placeholder="Sea especifico"
+	       />
+
 	</div>
 
 	<!-- services -->
-	<div bs-panel title="Servicios que debe incluir" class="form-panel">
+	<div bs-panel title="Servicios incluidos" class="form-panel">
 		<div ng-include="'partials/appartment_form/services.html'"></div>    
 	</div>
 
@@ -45,21 +55,43 @@
 		<div ng-include="'partials/appartment_form/gender.html'"></div>   
 	</div>
 
-	<!-- bedrooms -->
-	<div bs-panel title="Habitaciones disponibles" class="form-panel">
-		<input 	placeholder="Cantidad"
-			label=""
-			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
+	<!-- others -->
+	<div bs-panel title="Infomarción complementaria" class="form-panel">
+		<input
+			bs-form-control
 			type="number" 
-			ng-model="item.bedrooms" 
-			bs-form-control="">
-		</input>
+			ng-model="item.habitaciones"
+			label="Habitaciones" 
+			label-class="col-xs-3 col-sm-2 col-lg-1" 
+			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+			placeholder="Solo las habitaciones disponibles"
+	       />
+
+		<input
+			bs-form-control
+			type="number" 
+			ng-model="item.area"
+			label="Área" 
+			label-class="col-xs-3 col-sm-2 col-lg-1" 
+			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+			placeholder="Tamaño del apartamento en metros cuadrados"
+	       />
+
+		<textarea
+			bs-form-control
+			type="number" 
+			ng-model="item.descripcion"
+			label="Descripción" 
+			label-class="col-xs-3 col-sm-2 col-lg-1" 
+			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+			placeholder="Cuente a sus posibles clientes otras características del apartamento"
+	       ></textarea>
 	</div>
 
     <div bs-panel class="form-actions">
       <div content-for="navbarAction">
         <button class="btn btn-primary">
-          Buscar
+          Agregar
         </button>
       </div>
     </div>
