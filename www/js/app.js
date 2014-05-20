@@ -1,8 +1,8 @@
 var app = angular.module('Apparta', [
-  "uiSlider",
   "ngRoute",
   "ngTouch",
-  "mobile-angular-ui"
+  "mobile-angular-ui",
+  "angular-carousel"
 ]);
 
 app.config(['$routeProvider',
@@ -19,6 +19,10 @@ app.config(['$routeProvider',
       when('/buscar-apartamento', {
         templateUrl: 'partials/buscar-apartamento.html',
         controller: 'BuscarApartamentoCtrl'
+      }).
+      when('/ver-apartamento', {
+        templateUrl: 'partials/ver-apartamento.html',
+        controller: 'VerApartamentoCtrl'
       }).
       when('/home', {
         templateUrl: 'partials/home.html',
