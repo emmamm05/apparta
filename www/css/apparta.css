@@ -24,21 +24,47 @@
     background-color: #ffffff;
     border-color: #ADADAD;
 }
+.well {
+    border-radius: 0;
+}
 
 /*
  * 
- * SEARCH
+ * VIEW APARTA
+ *
+ */
+.price{
+	color: #5ad427;
+	font-weight: bold;
+	font-size: 28px;
+}
+.services-group label,
+.feature-group label{
+	float: none;
+	width: 24%;
+}
+
+/*
+ * 
+ * SEARCH APARTA
  *
  */
 .radio-group,
-.checkbox-group{
+.checkbox-group,
+.services-group,
+.feature-group{
 	margin-top: 15px;
 	margin-bottom: 15px;
 	text-align: center;
 }
 .radio-group i,
+.services-group i,
 .checkbox-group i{
 	font-size: 24pt;
+	display: block;
+}
+.feature-group i{
+	font-size: 18pt;
 	display: block;
 }
 .radio-group input,

@@ -21,7 +21,7 @@ app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
 
 app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-     $scope.item = {	descripcion: 		'descripcion del aparta',  	
+     $scope.item = {	descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
 			direccion_fisica: 	'direccion del aparta', 
 			area: 			230,  	
 			ubicacion_latitud: 	5.342, 
@@ -32,15 +32,42 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 			mensualidad: 		70000, 
 			habitaciones: 		5, 
 			titulo: 		'Titulo del aparta', 
-			genero: 		'female', 
+			genero: 		'male', 
 			opcion_agua: 		true, 
 			opcion_electricidad: 	true, 
 			opcion_seguridad: 	true, 
 			opcion_internet: 	true,
-			foto_1:		 	'http://lorempixel.com/250/200/city/',
-			foto_2:		 	'http://lorempixel.com/250/200/city/',
-			foto_3:		 	'http://lorempixel.com/250/200/city/',
-			foto_4:		 	'http://lorempixel.com/250/200/city/'
+			photos: 		[
+							{src: 'http://lorempixel.com/250/200/city/'},
+							{src: 'http://lorempixel.com/250/200/abstract/'},
+							{src: 'http://lorempixel.com/250/200/transport/'},
+							{src: 'http://lorempixel.com/250/200/technics/'}
+					    	]
 		};
+
+    // initial image index
+    $scope._Index = 0;
+
+    // if a current image is the same as requested image
+    $scope.isActive = function (index) {
+        return $scope._Index === index;
+    };
+
+    // show prev image
+    $scope.showPrev = function () {
+        $scope._Index = ($scope._Index > 0) ? --$scope._Index : $scope.photos.length - 1;
+    };
+
+    // show next image
+    $scope.showNext = function () {
+        $scope._Index = ($scope._Index < $scope.photos.length - 1) ? ++$scope._Index : 0;
+    };
+
+    // show a certain image
+    $scope.showPhoto = function (index) {
+        $scope._Index = index;
+    };
+
+
   }]);
 
