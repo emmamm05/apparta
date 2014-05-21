@@ -31,7 +31,7 @@ app.service('UsuariosAPIService', [
     }
     
     this.SEARCH = function(){
-       
+       Usuario.query({})
     }    
 }]);
  

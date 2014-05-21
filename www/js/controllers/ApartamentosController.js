@@ -1,3 +1,5 @@
+var ApartamentosAPIService = require("./../services/ApartamentosAPIService");
+
 app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
       //Falta hay q hacer lo de facebook 
@@ -6,6 +8,7 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
  
 app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
+     //$scope.item = ApartamentosAPIService.CREATE;
      $scope.item = {	sexo: 	'unisex'
 		};
   }]);

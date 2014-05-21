@@ -1,6 +1,6 @@
-app.controller('LoginCtrl', ['$scope', '$routeParams',
+app.controller('UsuariosCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
       //Falta hay q hacer lo de facebook 
-    
+      
   }]);
  
