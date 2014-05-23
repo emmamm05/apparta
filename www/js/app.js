@@ -8,9 +8,9 @@ var app = angular.module('Apparta', [
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/results', {
-        templateUrl: 'partials/results.html',
-        controller: 'ResultsCtrl'
+      when('/resultados-apartamentos', {
+        templateUrl: 'partials/resultados-apartamentos.html',
+        controller: 'ResultadosCtrl'
       }).
       when('/agregar-apartamento', {
         templateUrl: 'partials/agregar-apartamento.html',

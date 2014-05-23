@@ -23,8 +23,8 @@ Favoritos
 		ng-src="{{photo.src}}" />
         <!-- extra navigation controls -->
         <ul class="nav">
-            <li ng-repeat="photo in item.photos" ng-class="{'active':isActive($index)}" class="col-xs-3">
-                <img src="{{photo.src}}" ng-click="showPhoto($index);" class="img-responsive " ></img>
+            <li ng-repeat="foto in item.fotos" ng-class="{'active':isActive($index)}" class="col-xs-3">
+                <img src="{{foto.src}}" ng-click="showPhoto($index);" class="img-responsive " ></img>
             </li>
         </ul>
     </div>

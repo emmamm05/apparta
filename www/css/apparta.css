@@ -27,7 +27,13 @@
 .well {
     border-radius: 0;
 }
-
+.navbar-absolute-bottom .btn-navbar:hover,
+.navbar-absolute-bottom .btn-navbar {
+    color: #A9A9A9;
+}
+.navbar-absolute-bottom .btn-navbar.active{
+    color: #007AFF;
+}
 /*
  * 
  * VIEW APARTA
@@ -96,6 +102,14 @@ ul.rating {
   cursor: pointer;
 }
 
+.apartas-item .rating li {
+  font-size: 18pt;
+}
+
+.apartas-item ul.rating {
+  text-align: left;
+}
+
 .rating .filled {
   color: #ffcd02;
 }
@@ -152,19 +166,18 @@ ul.rating {
 .list-inline>li {
     padding: 0;
 }
-.property-item {
-    background-color: #fff !important;
+.apartas-item {
     -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
     box-shadow: 1px 1px 0 rgba(0,0,0,.2);
     border: 1px solid #ededed;
-	padding: 10px!important;
-	margin: 0px!important;
+    padding: 10px!important;
+    margin: 0px!important;
 }
-.property-list {
+.apartas-list {
 	padding: 0 !important;
 	margin: 0 !important;
 }
-.property-descrip {
+.apartas-descrip {
 	padding-top: 10px !important;
 }
 .fnt-smaller {
