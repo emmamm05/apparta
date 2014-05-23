@@ -121,3 +121,33 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 
   }]);
 
+
+
+
+app.controller('EditarApartamentoCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+     $scope.item = {	descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
+			direccion_fisica: 	'direccion del aparta', 
+			area: 			230,  	
+			ubicacion_latitud: 	5.342, 
+			ubicacion_longitud: 	10.2323, 
+			cercania_tec: 		5, 
+			//comentarios: 	[Comentario], 
+			//calificaciones: 	[Calificacion], 
+			mensualidad: 		70000, 
+			habitaciones: 		5, 
+			titulo: 		'Titulo aparta', 
+			genero: 		'male', 
+			opcion_agua: 		true, 
+			opcion_electricidad: 	true, 
+			opcion_seguridad: 	true, 
+			opcion_internet: 	true,
+			fotos: 		[
+							{src: 'http://lorempixel.com/250/200/city/'},
+							{src: 'http://lorempixel.com/250/200/abstract/'},
+							{src: 'http://lorempixel.com/250/200/transport/'},
+							{src: 'http://lorempixel.com/250/200/technics/'}
+					    	]
+		};
+
+  }]);

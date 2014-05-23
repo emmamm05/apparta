@@ -24,6 +24,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/ver-apartamento.html',
         controller: 'VerApartamentoCtrl'
       }).
+      when('/editar-apartamento', {
+        templateUrl: 'partials/editar-apartamento.html',
+        controller: 'EditarApartamentoCtrl'
+      }).
       when('/home', {
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
