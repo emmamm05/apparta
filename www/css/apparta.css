@@ -1,0 +1,205 @@
+/*
+ * 
+ * GENERAL
+ *
+ */
+.panel-heading {
+    border-bottom: 0;
+    border-top: 1px solid #DDD;
+}
+.panel {
+    margin-bottom: 0;
+}
+.section {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.btn-default.active, 
+.btn-default:active, 
+.btn-default:focus, 
+.btn-default:hover, 
+.open .dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #ffffff;
+    border-color: #ADADAD;
+}
+.well {
+    border-radius: 0;
+}
+.navbar-absolute-bottom .btn-navbar:hover,
+.navbar-absolute-bottom .btn-navbar {
+    color: #A9A9A9;
+}
+.navbar-absolute-bottom .btn-navbar.active{
+    color: #007AFF;
+}
+
+.admin-button {
+    margin-top:15px;
+}
+.admin-button a{
+    color: #A9A9A9;
+    margin-left:15px;
+}
+
+/*
+ * 
+ * VIEW APARTA
+ *
+ */
+.price{
+	color: #5ad427;
+	font-weight: bold;
+	font-size: 28px;
+}
+.services-group label,
+.feature-group label{
+	float: none;
+	width: 24%;
+}
+
+/*
+ * 
+ * SEARCH APARTA
+ *
+ */
+.radio-group,
+.checkbox-group,
+.services-group,
+.feature-group{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+.radio-group i,
+.services-group i,
+.checkbox-group i{
+	font-size: 24pt;
+	display: block;
+}
+.feature-group i{
+	font-size: 18pt;
+	display: block;
+}
+.radio-group input,
+.checkbox-group input{
+	display: none;
+}
+/*
+ * 
+ * RATING
+ *
+ */
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: block;
+  text-align: center;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-size: 24pt;
+  cursor: pointer;
+}
+
+.apartas-item .rating li {
+  font-size: 18pt;
+}
+
+.apartas-item ul.rating {
+  text-align: left;
+}
+
+.rating .filled {
+  color: #ffcd02;
+}
+
+
+
+
+
+
+/* Main carousel style */
+.carousel {
+    width: 600px;
+}
+
+/* Indicators list style */
+.article-slide .carousel-indicators {
+    bottom: 0;
+    left: 0;
+    margin-left: 5px;
+    width: 100%;
+}
+/* Indicators list style */
+.article-slide .carousel-indicators li {
+    border: medium none;
+    border-radius: 0;
+    float: left;
+    height: 54px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: 5px !important;
+    margin-top: 0;
+    width: 100px;
+}
+/* Indicators images style */
+.article-slide .carousel-indicators img {
+    border: 2px solid #FFFFFF;
+    float: left;
+    height: 54px;
+    left: 0;
+    width: 100px;
+}
+/* Indicators active image style */
+.article-slide .carousel-indicators .active img {
+    border: 2px solid #428BCA;
+    opacity: 0.7;
+}
+
+
+/*
+ * 
+ * LIST APARTAS
+ *
+ */
+.list-inline>li {
+    padding: 0;
+}
+.apartas-item {
+    -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    border: 1px solid #ededed;
+    padding: 10px!important;
+    margin: 0px!important;
+}
+.apartas-list {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.apartas-descrip {
+	padding-top: 10px !important;
+}
+.fnt-smaller {
+    font-size: .9em;
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.list-inline {
+    color: #535353;
+	 margin: 0!important;
+}
+.img-list-apartas {
+	max-width:100%;
+	height:auto;
+}

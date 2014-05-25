@@ -1,0 +1,111 @@
+<div content-for="title">
+  <span>{{item.titulo}}</span>
+</div>
+
+
+<div class="scrollable">
+ <div class="scrollable-content section">
+
+<!--
+mapa
+Contacto
+Favoritos
+-->
+
+    <!-- slider container -->
+    <div class="container slider">
+        <!-- enumerate all photos -->
+        <img 	ng-repeat="foto in item.fotos" 
+		class="slide img-responsive col-xs-12" 
+		ng-swipe-right="showPrev()"
+		ng-swipe-left="showNext()" 
+		ng-show="isActive($index)" 
+		ng-src="{{foto.src}}" />
+        <!-- extra navigation controls -->
+        <ul class="nav">
+            <li ng-repeat="foto in item.fotos" ng-class="{'active':isActive($index)}" class="col-xs-3">
+                <img src="{{foto.src}}" ng-click="showPhoto($index);" class="img-responsive " ></img>
+            </li>
+        </ul>
+    </div>
+
+<!--  -->
+<div bs-panel class="form-panel">
+	<div class="pull-left price">&#8353; {{item.mensualidad}}/mes</div>
+	<div fundoo-rating rating-value="3" max="5" class="pull-right"></div>
+</div>
+
+
+<!-- descripcion -->
+<div bs-panel title="Caracter&iacute;sticas" class="form-panel">
+	<div class="feature-group">
+	  <label class="btn btn-default col-xs-3">
+		<i class="icon-area">{{item.area}}</i> m&sup2 de &aacute;rea
+	  </label>
+	  <label class="btn btn-default col-xs-3">
+		<i class="icon-bethroom">{{item.habitaciones}}</i>habitaciones
+	  </label>
+	  <label class="btn btn-default col-xs-3">
+		<i class="icon-{{item.genero}}"></i>
+		<span ng-switch="item.genero">
+		  <span ng-switch-when="male">solo hombres</span>
+		  <span ng-switch-when="female">solo mujeres</span>
+		  <span ng-switch-default>mixto</span>
+		</span>
+	  </label>
+	  <label class="btn btn-default col-xs-3">
+		<i class="icon-location">{{item.cercania_tec}}</i> Km del TEC
+	  </label>
+	</div>
+<p class="text-justify">{{item.descripcion}}</p>
+</div>
+
+<!-- services -->
+<div bs-panel title="Servicios incluidos" class="form-panel">
+	<div class="services-group">
+	  <label ng-class="{'hidden':!item.opcion_agua}" class="btn btn-default col-xs-3">
+		<i class="icon-water"></i> Agua
+	  </label>
+	  <label ng-class="{'hidden':!item.opcion_electricidad}" class="btn btn-default col-xs-3">
+		<i class="icon-flash"></i> Electricidad
+	  </label>
+	  <label ng-class="{'hidden':!item.opcion_internet}" class="btn btn-default col-xs-3">
+		<i class="icon-world"></i> Internet
+	  </label>
+	  <label ng-class="{'hidden':!item.opcion_seguridad}" class="btn btn-default col-xs-3">
+		<i class="icon-police"></i> Seguridad
+	  </label>
+	  <p 	class="text-muted" 
+		ng-class="{'hidden':item.opcion_agua || item.opcion_electricidad || item.opcion_internet || item.opcion_seguridad}">
+			No incluye ninguno
+	  </p>
+	</div>
+</div>
+
+<div class="well">
+<button type="button" class="btn btn-default btn-lg btn-block">Agregar a lista de inter&eacute;s</button>
+<button type="button" class="btn btn-primary btn-lg btn-block">Contactar al anunciante</button>
+</div>
+
+
+
+<br/>
+<br/>
+<b>en el mapa va:</b><br/>
+direccion_fisica: {{item.direccion_fisica}}
+<br/>
+ubicacion_latitud: {{item.ubicacion_latitud}}
+<br/>
+ubicacion_longitud: {{item.ubicacion_longitud}}
+<br/>
+
+    <div bs-panel class="form-actions">
+      <div content-for="navbarAction">
+        <button class="btn btn-primary">
+          <i class="icon-area"></i>Mapa
+        </button>
+      </div>
+    </div>
+
+ </div>
+</div>
