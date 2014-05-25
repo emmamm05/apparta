@@ -15,12 +15,12 @@ Favoritos
     <!-- slider container -->
     <div class="container slider">
         <!-- enumerate all photos -->
-        <img 	ng-repeat="photo in item.photos" 
+        <img 	ng-repeat="foto in item.fotos" 
 		class="slide img-responsive col-xs-12" 
 		ng-swipe-right="showPrev()"
 		ng-swipe-left="showNext()" 
 		ng-show="isActive($index)" 
-		ng-src="{{photo.src}}" />
+		ng-src="{{foto.src}}" />
         <!-- extra navigation controls -->
         <ul class="nav">
             <li ng-repeat="foto in item.fotos" ng-class="{'active':isActive($index)}" class="col-xs-3">

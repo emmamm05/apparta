@@ -69,4 +69,5 @@ This stylesheet and the associated (x)html may be modified in any way to fit you
 }
 .slide, .slide.ng-hide-remove.ng-hide-remove-active {
     opacity:1;
+    max-height: 340px;
 }

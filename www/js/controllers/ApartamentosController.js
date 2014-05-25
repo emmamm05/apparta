@@ -1,4 +1,4 @@
-var ApartamentosAPIService = require("./../services/ApartamentosAPIService");
+//var ApartamentosAPIService = require("./../services/ApartamentosAPIService");
 
 app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
