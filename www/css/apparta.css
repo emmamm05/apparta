@@ -34,6 +34,14 @@
 .navbar-absolute-bottom .btn-navbar.active{
     color: #007AFF;
 }
+
+.admin-button {
+    margin-top:15px;
+}
+.admin-button a{
+    color: #A9A9A9;
+}
+
 /*
  * 
  * VIEW APARTA

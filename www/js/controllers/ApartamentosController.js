@@ -123,6 +123,53 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 
 
 
+app.controller('MisApartamentosCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+	$scope.order = 'calificacion';
+	$scope.reverse = true;
+	$scope.results = [
+	    {'titulo': 'Barato y espacioso',
+	     'calificacion': '3',
+	     'area': '220',
+	     'habitaciones': '5',
+	     'sexo': 'male',
+	     'cercania_tec': '1.8',
+	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'fotos':[
+			{src: 'http://lorempixel.com/250/200/city/'},
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/transport/'},
+			{src: 'http://lorempixel.com/250/200/technics/'}
+		    	]},
+	    {'titulo': 'Oferta!!',
+	     'calificacion': '5',
+	     'area': '220',
+	     'habitaciones': '3',
+	     'sexo': 'unisex',
+	     'cercania_tec': '2.1',
+	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'fotos':[
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/technics/'},
+			{src: 'http://lorempixel.com/250/200/transport/'},
+			{src: 'http://lorempixel.com/250/200/technics/'}
+		    	]},
+	    {'titulo': 'Primeros ingresos',
+	     'calificacion': '1',
+	     'area': '320',
+	     'habitaciones': '4',
+	     'sexo': 'female',
+	     'cercania_tec': '7.2',
+	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'fotos':[
+			{src: 'http://lorempixel.com/250/200/transport/'},
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/technics/'}
+		    	]},
+	  ];
+  }]);
+
 
 app.controller('EditarApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {

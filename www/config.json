@@ -97,9 +97,21 @@
       "src": "fontawesome"
     },
     {
+      "uid": "41087bc74d4b20b55059c60a33bf4008",
+      "css": "edit",
+      "code": 59426,
+      "src": "fontawesome"
+    },
+    {
       "uid": "0d08dbb1dd648a43bdea81b7e6c9e036",
       "css": "location",
       "code": 59401,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f48ae54adfb27d8ada53d0fd9e34ee10",
+      "css": "delete",
+      "code": 59427,
       "src": "fontawesome"
     },
     {

@@ -16,6 +16,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/agregar-apartamento.html',
         controller: 'AgregarApartamentoCtrl'
       }).
+      when('/mis-apartamentos', {
+        templateUrl: 'partials/mis-apartamentos.html',
+        controller: 'MisApartamentosCtrl'
+      }).
       when('/buscar-apartamento', {
         templateUrl: 'partials/buscar-apartamento.html',
         controller: 'BuscarApartamentoCtrl'
