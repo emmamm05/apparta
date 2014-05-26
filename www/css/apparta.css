@@ -62,6 +62,10 @@
 	color:#F0AD4E;
 	background-color:#FCF8E3;
 }
+.media-body .price{
+	font-weight: bold;
+	font-size: 17px;
+}
 /*
  * 
  * SEARCH APARTA
