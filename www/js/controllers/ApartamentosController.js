@@ -8,12 +8,18 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
  
 app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
+<<<<<<< HEAD
     //$scope.item = ApartamentosAPIService.CREATE;
     $scope.item = {	genero: 	'unisex' };
     $scope.crearAparta = function(){
       console.debug($scope);      
     };
     //ApartamentosAPIService.CREATE($scope.item)
+=======
+     //$scope.item = ApartamentosAPIService.CREATE;
+     $scope.item = {	genero: 	'unisex'
+		};
+>>>>>>> 660fe642cad5c0691bb0fd5244e0760f8188ed82
   }]);
 
 app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
@@ -22,6 +28,15 @@ app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
 			calificacion: 	3, 
 			cercania_tec: 	5
 		};
+	$scope.demo2 = {
+	    range: {
+		min: 0,
+		max: 10050
+	    },
+	    minPrice: 1000,
+	    maxPrice: 4000
+	};
+
   }]);
 
 

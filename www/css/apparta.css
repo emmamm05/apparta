@@ -58,7 +58,10 @@
 	float: none;
 	width: 24%;
 }
-
+.input-group-addon.warning{
+	color:#F0AD4E;
+	background-color:#FCF8E3;
+}
 /*
  * 
  * SEARCH APARTA
