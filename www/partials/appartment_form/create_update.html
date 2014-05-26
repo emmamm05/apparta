@@ -3,17 +3,27 @@
 	<!-- general -->
 	<div bs-panel title="Información general" class="form-panel">
 
-	       <input
-			bs-form-control
-			type="text" 
-			ng-model="item.titulo"
-			label="T&iacute;tulo" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-			ng-maxlength="15"
-			ng-minlength="5"
-			placeholder="Elija un t&iacute;tulo creativo"
-	       />
+		<div class="form-group row">
+
+		    <label class="control-label col-xs-3 col-sm-2 col-lg-1" for="item_titulo_input">T&iacute;tulo</label>
+		    <div class="form-control-wrapper col-xs-9 col-sm-10 col-lg-11">
+				<div class="input-group">
+				       <input
+						type="text" 
+						ng-model="item.titulo"
+						class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+						id="item_titulo_input" 
+						placeholder="Elija un t&iacute;tulo creativo"    
+						ng-model="item.titulo"  
+						ng-minlength="1" 
+						maxlength="15"
+				       />
+				  	<span class="input-group-addon" ng-class="{warning: item.titulo.length>=10}">{{15-item.titulo.length}}</span>
+				</div>
+		    </div>
+		</div>
+
+		<label class="col-xs-3 col-sm-2 col-lg-1" ></label>
 
 	       <input
 			bs-form-control
