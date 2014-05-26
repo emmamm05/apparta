@@ -6,11 +6,21 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
     
   }]);
  
+
 app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
     //$scope.item = ApartamentosAPIService.CREATE;
-    $scope.item = {	genero: 'unisex', opcion_agua: false, opcion_electricidad: false, opcion_internet: false,
-		        opcion_seguridad: false
+    $scope.item = {	genero: 'unisex',
+    				opcion_agua: false,
+    				opcion_electricidad: false,
+    				opcion_internet: false,
+    				opcion_seguridad: false,
+    				fotos:[
+						{src: 'img/add_img.png'},
+						{src: 'img/add_img.png'},
+						{src: 'img/add_img.png'},
+						{src: 'img/add_img.png'}
+			    	]
     };
     $scope.crearAparta = function(){
       console.debug($scope.item);
@@ -25,6 +35,33 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
 	  console.log(status);
 	});
     };
+/*
+    // Called when a photo is successfully retrieved
+    //
+    $scope.onPhotoURISuccess = function (imageURI, idPhoto, index) {
+
+      var largeImage = document.getElementById(idPhoto);
+
+      // Unhide image elements
+      //
+      $scope.item.fotos[index] = imageURI;
+    };
+
+    // A button will call this function
+    //
+    $scope.getPhoto = function (source, idPhoto, index) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(function(imageURI) { $scope.onPhotoURISuccess(imageURI, idPhoto, index); }, $scope.onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    };
+
+    // Called if something bad happens.
+    // 
+    $scope.onFail = function (message) {
+      alert('Failed because: ' + message);
+    };
+*/
   }]);
 
 app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
