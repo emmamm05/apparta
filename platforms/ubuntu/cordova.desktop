@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Apparta
+Exec=./cordova-ubuntu www/
+Icon=qmlscene
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true

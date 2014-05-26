@@ -1,0 +1,1 @@
+{"name":"cr.tec.moviles","version":"0.0.1","title":"Apparta","hooks":{"cordova":{"desktop":"cordova.desktop","apparmor":"apparmor.json"}},"framework":"ubuntu-sdk-13.10","maintainer":"Apache Cordova Team","architecture":"amd64","description":"A sample Apache Cordova application that responds to the deviceready event."}

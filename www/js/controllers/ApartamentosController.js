@@ -1,4 +1,4 @@
-//var ApartamentosAPIService = require("./../services/ApartamentosAPIService");
+
 
 app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
@@ -6,20 +6,23 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
     
   }]);
  
-app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
-<<<<<<< HEAD
+app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
     //$scope.item = ApartamentosAPIService.CREATE;
     $scope.item = {	genero: 	'unisex' };
     $scope.crearAparta = function(){
-      console.debug($scope);      
+      console.debug($scope.item);
+      $http({method: 'POST', url: "http://apparta.herokuapp.com/api/apartamentos",
+	headers:{'Content-Type':'x-www-form-urlencoded', 'Accept':'*/*'},
+	data: $scope.item }).
+	success(function(data, status, headers, config) {
+	  console.log("POST Sucess");
+	}).
+	error(function(data, status, headers, config) {
+	  console.log("POST error");
+	  console.log(status);
+	});
     };
-    //ApartamentosAPIService.CREATE($scope.item)
-=======
-     //$scope.item = ApartamentosAPIService.CREATE;
-     $scope.item = {	genero: 	'unisex'
-		};
->>>>>>> 660fe642cad5c0691bb0fd5244e0760f8188ed82
   }]);
 
 app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
