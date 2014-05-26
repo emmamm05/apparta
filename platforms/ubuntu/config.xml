@@ -2,12 +2,6 @@
 <widget id="cr.tec.moviles" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Apparta</name>
     <preference name="loglevel" value="DEBUG" />
-    <feature name="DeviceOrientation">
-        <param policy_group="sensors" policy_version="1" />
-    </feature>
-    <feature name="Geolocation">
-        <param policy_group="location" policy_version="1" />
-    </feature>
     <name>Apparta</name>
     <description>A sample Apache Cordova application that responds to the deviceready event.</description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
@@ -15,4 +9,10 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <feature name="DeviceOrientation">
+        <param policy_group="sensors" policy_version="1" />
+    </feature>
+    <feature name="Geolocation">
+        <param policy_group="location" policy_version="1" />
+    </feature>
 </widget>

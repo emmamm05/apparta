@@ -6,12 +6,6 @@
 <div class="scrollable">
  <div class="scrollable-content section">
 
-<!--
-mapa
-Contacto
-Favoritos
--->
-
     <!-- slider container -->
     <div class="container slider">
         <!-- enumerate all photos -->
@@ -32,7 +26,7 @@ Favoritos
 <!--  -->
 <div bs-panel class="form-panel">
 	<div class="pull-left price">&#8353; {{item.mensualidad}}/mes</div>
-	<div fundoo-rating rating-value="3" max="5" class="pull-right"></div>
+	<div fundoo-rating rating-value="{{item.calificacion}}" max="5" class="pull-right"></div>
 </div>
 
 
@@ -87,8 +81,6 @@ Favoritos
 <button type="button" class="btn btn-primary btn-lg btn-block">Contactar al anunciante</button>
 </div>
 
-
-
 <br/>
 <br/>
 <b>en el mapa va:</b><br/>
@@ -98,6 +90,46 @@ ubicacion_latitud: {{item.ubicacion_latitud}}
 <br/>
 ubicacion_longitud: {{item.ubicacion_longitud}}
 <br/>
+<br/>
+<br/>
+
+<!-- new comment -->
+<div bs-panel title="Agregar un comentario" class="form-panel">
+	<textarea
+		ng-model="nuevo_comentario"
+		class="ng-scope ng-pristine ng-valid needsclick form-control"
+		maxlength="140"
+		placeholder="&iquest;Qu&eacute; le parece el apartamento? &iquest;Quiere solicitar m&aacute;s informaci&oacute;n?" >
+	</textarea>
+
+	<div class="pull-left">
+		<div 	fundoo-rating 
+			rating-value="nueva_calificacion" 
+			max="5" 
+			on-rating-selected="saveRatingToServer(nueva_calificacion)">
+		</div>
+	</div>
+	<div class="pull-right text-muted">{{max_len_comentario-nuevo_comentario.length}} caracteres</div>
+	<button type="button" class="btn btn-primary btn-lg btn-block">Publicar</button>
+</div>
+
+<!-- new comment -->
+<div bs-panel title="Comentarios" class="form-panel">
+	<ul class="media-list">
+	
+	  <li class="media well"  ng-repeat="comentario in item.comentarios">
+	    <a class="pull-left">
+	      <img class="media-object" src="http://graph.facebook.com/{{comentario.autor.oauth_id}}/picture" alt="{{comentario.autor.nombre}}">
+	    </a>
+	    <div class="media-body">
+	      <h4 class="media-heading">{{comentario.autor.nombre+" "+comentario.autor.apellido}}</h4>
+		<p  class="text-muted" am-time-ago="comentario.fecha_publicacion"></p>
+	      	<p  class="text-justify">{{comentario.contenido}}</p>
+	    </div>
+	  </li>
+	</ul>
+</div>
+
 
     <div bs-panel class="form-actions">
       <div content-for="navbarAction">

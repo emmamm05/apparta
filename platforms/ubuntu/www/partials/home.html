@@ -11,6 +11,7 @@
 			<img ng-src="{{apartment.img}}" alt="Image" style="max-width:100%;">
 			<div class="caption">
 			  <h4>{{apartment.title}}</h4>
+			  <p class="price">&#8353; {{apartment.mensualidad}}/mes</p>
 			</div>
 		    </a>
 		  </div>
@@ -22,11 +23,12 @@
         <div class="media-body">
             	<h3 class="media-heading">Apartas recientes</h3>
 	    	<div class="row">
-		  <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="apartment in popular_apartments">
+		  <div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="apartment in recent_apartments">
 		    <a href="#/ver-apartamento" class="thumbnail">
 			<img ng-src="{{apartment.img}}" alt="Image" style="max-width:100%;">
 			<div class="caption">
 			  <h4>{{apartment.title}}</h4>
+			  <p class="price">&#8353; {{apartment.mensualidad}}/mes</p>
 			</div>
 		    </a>
 		  </div>

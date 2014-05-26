@@ -9,11 +9,13 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
 app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
     //$scope.item = ApartamentosAPIService.CREATE;
-    $scope.item = {	genero: 	'unisex' };
+    $scope.item = {	genero: 'unisex', opcion_agua: false, opcion_electricidad: false, opcion_internet: false,
+		        opcion_seguridad: false
+    };
     $scope.crearAparta = function(){
       console.debug($scope.item);
-      $http({method: 'POST', url: "http://apparta.herokuapp.com/api/apartamentos",
-	headers:{'Content-Type':'x-www-form-urlencoded', 'Accept':'*/*'},
+      $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
+	headers:{ 'Accept':'*/*'},
 	data: $scope.item }).
 	success(function(data, status, headers, config) {
 	  console.log("POST Sucess");

@@ -9,24 +9,32 @@ app.controller('Apartamentos',['$scope','$routeParams',
 app.controller('HomeCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
       $scope.popular_apartments = [
-	    {'title': 'Nexus S',
-	     'img': 'http://lorempixel.com/250/205/city/'},
-	    {'title': 'Motorola XOOM',
-	     'img': 'http://lorempixel.com/250/210/city/'},
-	    {'title': 'Nexus S',
-	     'img': 'http://lorempixel.com/250/205/city/'},
-	    {'title': 'MOTOROLA XOOM™',
-	     'img': 'http://lorempixel.com/250/200/city/'}
+	    {'title': 'Titulo d aparta',
+	     'img': 'http://lorempixel.com/250/205/city/',
+	     'mensualidad': 32100},
+	    {'title': 'Titulo del dos',
+	     'img': 'http://lorempixel.com/250/210/city/',
+	     'mensualidad': 21000},
+	    {'title': 'Lorem ipsum',
+	     'img': 'http://lorempixel.com/250/205/city/',
+	     'mensualidad': 304000},
+	    {'title': 'Sec fesares et',
+	     'img': 'http://lorempixel.com/250/200/city/',
+	     'mensualidad': 725000}
 	  ];
 	$scope.recent_apartments = [
-	    {'title': 'Nexus S',
-	     'img': 'http://lorempixel.com/250/205/city/'},
-	    {'title': 'Motorola XOOM',
-	     'img': 'http://lorempixel.com/250/210/city/'},
-	    {'title': 'Nexus S',
-	     'img': 'http://lorempixel.com/250/205/city/'},
-	    {'title': 'MOTOROLA XOOM™',
-	     'img': 'http://lorempixel.com/250/200/city/'}
+	    {'title': 'Titulo del uno',
+	     'img': 'http://lorempixel.com/250/205/city/',
+	     'mensualidad': 72000},
+	    {'title': 'Titulo del 2',
+	     'img': 'http://lorempixel.com/250/210/city/',
+	     'mensualidad': 32100},
+	    {'title': 'Titulo del tres',
+	     'img': 'http://lorempixel.com/250/205/city/',
+	     'mensualidad': 62000},
+	    {'title': 'Titulo cuadro',
+	     'img': 'http://lorempixel.com/250/200/city/',
+	     'mensualidad': 92000}
 	  ];
   }]);
 

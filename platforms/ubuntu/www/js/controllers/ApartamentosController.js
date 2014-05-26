@@ -12,8 +12,8 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
     $scope.item = {	genero: 	'unisex' };
     $scope.crearAparta = function(){
       console.debug($scope.item);
-      $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
-	headers:{'Content-Type':'x-www-form-urlencoded', 'Accept':'*/*','Origin':'localhost'},
+      $http({method: 'POST', url: "http://apparta.herokuapp.com/api/apartamentos",
+	headers:{'Content-Type':'x-www-form-urlencoded', 'Accept':'*/*'},
 	data: $scope.item }).
 	success(function(data, status, headers, config) {
 	  console.log("POST Sucess");
@@ -53,7 +53,8 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
 	     'area': '220',
 	     'habitaciones': '5',
 	     'sexo': 'male',
-	     'cercania_tec': '1.8',
+	     'cercania_tec': '1.8', 
+	     'mensualidad': 150000, 
 	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
 	     'fotos':[
 			{src: 'http://lorempixel.com/250/200/city/'},
@@ -67,6 +68,7 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
 	     'habitaciones': '3',
 	     'sexo': 'unisex',
 	     'cercania_tec': '2.1',
+	     'mensualidad': 70000, 
 	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
 	     'fotos':[
 			{src: 'http://lorempixel.com/250/200/abstract/'},
@@ -80,6 +82,7 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
 	     'habitaciones': '4',
 	     'sexo': 'female',
 	     'cercania_tec': '7.2',
+	     'mensualidad': 320000, 
 	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
 	     'fotos':[
 			{src: 'http://lorempixel.com/250/200/transport/'},
@@ -98,8 +101,7 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 			ubicacion_latitud: 	5.342, 
 			ubicacion_longitud: 	10.2323, 
 			cercania_tec: 		5, 
-			//comentarios: 	[Comentario], 
-			//calificaciones: 	[Calificacion], 
+			calificacion: 		4, 
 			mensualidad: 		70000, 
 			habitaciones: 		5, 
 			titulo: 		'Titulo del aparta', 
@@ -113,8 +115,41 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 							{src: 'http://lorempixel.com/250/200/abstract/'},
 							{src: 'http://lorempixel.com/250/200/transport/'},
 							{src: 'http://lorempixel.com/250/200/technics/'}
-					    	]
+					],
+			comentarios: 	[
+						{
+							contenido: 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate',
+							fecha_publicacion: "2014-02-08 09:30",
+							autor: {
+								nombre: 	'Bairon',
+								apellido: 	'Perez',
+								oauth_id: 	'1763484990',
+								}
+						},
+						{
+							contenido: 'Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ',
+							fecha_publicacion: "2014-05-08 09:30",
+							autor: {
+								nombre: 	'Karla',
+								apellido: 	'Madrigal',
+								oauth_id: 	'100001429851672',
+								}
+						},
+						{
+							contenido: 'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ',
+							fecha_publicacion: "2013-02-08 09:30",
+							autor: {
+								nombre: 	'Emmanuel',
+								apellido: 	'Mora',
+								oauth_id: 	'1287630773',
+								}
+						}
+				    	]
 		};
+
+    $scope.nueva_calificacion = 5;
+    $scope.nuevo_comentario = "";
+    $scope.max_len_comentario = 140;
 
     // initial image index
     $scope._Index = 0;
