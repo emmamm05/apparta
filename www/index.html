@@ -25,6 +25,8 @@
 
   <div ng-include="'partials/sidebar.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar"></div>
 
+  <div ng-include="'partials/sidebarRight.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebarMap"></div>
+
   <div class="app">
     <!-- Navbar -->
     <div class="navbar navbar-app navbar-absolute-top">
@@ -40,7 +42,7 @@
         </div>
 
         <div class="btn-group pull-right" yield-to="navbarAction">
-          <div ng-click="toggle('partials/rightSidebar')" class="btn btn-navbar">
+          <div ng-click="toggle('rightSidebar')" class="btn btn-navbar">
             <i class="icon-search"></i> Search
           </div>
         </div>
@@ -56,6 +58,7 @@
   </div>
 
 	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/camera.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
@@ -68,6 +71,7 @@
 	<script type="text/javascript" src="js/app.js"></script>
 <!-- 	<script type="text/javascript" src="js/services/ApartamentosAPIService.js"></script> -->
 	<script type="text/javascript" src="js/controllers/ApartamentosController.js"></script>
+	<script type="text/javascript" src="js/controllers/UsuariosController.js"></script>
 	<script type="text/javascript" src="js/controllers.js"></script>
 </body>
 
