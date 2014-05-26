@@ -1,4 +1,4 @@
-
+var root = "http://localhost:8080/api";
 
 app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
@@ -14,7 +14,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
     };
     $scope.crearAparta = function(){
       console.debug($scope.item);
-      $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
+      $http({method: 'POST', url: root + "/apartamentos",
 	headers:{ 'Accept':'*/*'},
 	data: $scope.item }).
 	success(function(data, status, headers, config) {
@@ -27,8 +27,8 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
     };
   }]);
 
-app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
+app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http',
+  function($scope, $routeParams,$http) {
      $scope.item = {	genero: 	'unisex',  	
 			calificacion: 	3, 
 			cercania_tec: 	5
@@ -41,7 +41,19 @@ app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
 	    minPrice: 1000,
 	    maxPrice: 4000
 	};
-
+     $scope.buscarAparta = function(){
+	console.debug($scope.item);
+	$http({method: 'GET', url: root + "/apartamentos/search",
+	  headers:{ 'Accept':'*/*'},
+	  data: $scope.item }).
+	  success(function(data, status, headers, config) {
+	    console.log("POST Sucess");
+	  }).
+	  error(function(data, status, headers, config) {
+	    console.log("POST error");
+	    console.log(status);
+	  });
+      };
   }]);
 
 
