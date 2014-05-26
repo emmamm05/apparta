@@ -1,8 +1,8 @@
 app.service('ApartamentosAPIService', [
   function() {
     
-    var root = "http://localhost"
-    var url = root + "/apartas/:apartamento_id";
+    var root = "http://localhost:8080/api"
+    var url = root + "/apartamentos/:apartamento_id";
     var Apartamento = $resource(url, { apartamento_id: '@id'});
     
     this.READ = function( pApartamentoId ) {
@@ -10,20 +10,20 @@ app.service('ApartamentosAPIService', [
     
     this.CREATE = function( pApartamento) {
 	 var apartamento = new Apartamento({
-	    descripcion         = pApartamento.descripcion;
-	    direccion_fisica  	= pApartamento.direccion_fisica;
-	    area 	        = pApartamento.area;
-	    ubicacion_latitud  	= pApartamento.latitud;
-	    ubicacion_longitud 	= pApartamento.longitud;
-	    cercaniaTEC 	= pApartamento.cercaniaTEC;
-	    mensualidad		= pApartamento.mensualidad;
-	    habitaciones	= pApartamento.habitaciones;
-	    titulo		= pApartamento.titulo;
-	    genero		= pApartamento.genero;
-	    opcion_agua		= pApartamento.opcion_agua;
-	    opcion_electricidad = pApartamento.opcion_electricidad;
-	    opcion_internet     = pApartamento.opcion_internet;
-	    opcion_seguridad    = pApartamento.opcion_seguridad;
+	    descripcion         = pApartamento['descripcion'];
+	    direccion_fisica  	= pApartamento['direccion_fisica'];
+	    area 	        = pApartamento['area'];
+	    ubicacion_latitud  	= pApartamento['latitud'];
+	    ubicacion_longitud 	= pApartamento['longitud'];
+	    cercaniaTEC 	= pApartamento['cercaniaTEC'];
+	    mensualidad		= pApartamento['mensualidad'];
+	    habitaciones	= pApartamento['habitaciones'];
+	    titulo		= pApartamento['titulo'];
+	    genero		= pApartamento['genero'];
+	    opcion_agua		= pApartamento['opcion_agua'];
+	    opcion_electricidad = pApartamento['opcion_electricidad'];
+	    opcion_internet     = pApartamento['opcion_internet'];
+	    opcion_seguridad    = pApartamento['opcion_seguridad'];
 	 });
     }
     

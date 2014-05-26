@@ -8,14 +8,17 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
  
 app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-     //$scope.item = ApartamentosAPIService.CREATE;
-     $scope.item = {	sexo: 	'unisex'
-		};
+    //$scope.item = ApartamentosAPIService.CREATE;
+    $scope.item = {	genero: 	'unisex' };
+    $scope.crearAparta = function(){
+      console.debug($scope);      
+    };
+    //ApartamentosAPIService.CREATE($scope.item)
   }]);
 
 app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-     $scope.item = {	sexo: 	'unisex',  	
+     $scope.item = {	genero: 	'unisex',  	
 			calificacion: 	3, 
 			cercania_tec: 	5
 		};
