@@ -89,8 +89,7 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 			ubicacion_latitud: 	5.342, 
 			ubicacion_longitud: 	10.2323, 
 			cercania_tec: 		5, 
-			//comentarios: 	[Comentario], 
-			//calificaciones: 	[Calificacion], 
+			calificacion: 		4, 
 			mensualidad: 		70000, 
 			habitaciones: 		5, 
 			titulo: 		'Titulo del aparta', 
@@ -104,8 +103,41 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 							{src: 'http://lorempixel.com/250/200/abstract/'},
 							{src: 'http://lorempixel.com/250/200/transport/'},
 							{src: 'http://lorempixel.com/250/200/technics/'}
-					    	]
+					],
+			comentarios: 	[
+						{
+							contenido: 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate',
+							fecha_publicacion: "2014-02-08 09:30",
+							autor: {
+								nombre: 	'Bairon',
+								apellido: 	'Perez',
+								oauth_id: 	'1763484990',
+								}
+						},
+						{
+							contenido: 'Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ',
+							fecha_publicacion: "2014-05-08 09:30",
+							autor: {
+								nombre: 	'Karla',
+								apellido: 	'Madrigal',
+								oauth_id: 	'100001429851672',
+								}
+						},
+						{
+							contenido: 'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ',
+							fecha_publicacion: "2013-02-08 09:30",
+							autor: {
+								nombre: 	'Emmanuel',
+								apellido: 	'Mora',
+								oauth_id: 	'1287630773',
+								}
+						}
+				    	]
 		};
+
+    $scope.nueva_calificacion = 5;
+    $scope.nuevo_comentario = "";
+    $scope.max_len_comentario = 140;
 
     // initial image index
     $scope._Index = 0;
