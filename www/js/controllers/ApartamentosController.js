@@ -29,6 +29,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
 	data: $scope.item }).
 	success(function(data, status, headers, config) {
 	  console.log("POST Sucess");
+	  toaster.pop('success', "¡Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
 	}).
 	error(function(data, status, headers, config) {
 	  console.log("POST error");
@@ -278,8 +279,14 @@ app.controller('MisApartamentosCtrl', ['$scope', '$routeParams',
   }]);
 
 
-app.controller('EditarApartamentoCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
+app.controller('EditarApartamentoCtrl', ['$scope', '$routeParams', 'toaster',
+  function($scope, $routeParams, toaster) {
+
+     $scope.save = function(){
+        toaster.pop('success', "¡Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
+    };
+    
+     
      $scope.item = {	descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
 			direccion_fisica: 	'direccion del aparta', 
 			area: 			230,  	
