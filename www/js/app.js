@@ -1,10 +1,12 @@
 var app = angular.module('Apparta', [
   "ngRoute",
   "ngTouch",
+  "ngAnimate",
   "mobile-angular-ui",
   "angular-carousel",
   "angularMoment",
-  "gd.ui.jsonexplorer"
+  "gd.ui.jsonexplorer",
+  "toaster"
 ]);
 
 app.config(['$routeProvider',
