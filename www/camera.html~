@@ -95,9 +95,10 @@ function onFail(message) {
   </head>
   <body>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY, 'foto1');">Libreria1</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM, 'foto1');">Album1</button><br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY, 'foto2');">Libreria2</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM, 'foto2');">Album2</button><br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY, 'foto3');">Libreria3</button><br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY, 'foto4');">Libreria4</button><br>
+	
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="foto1" src="" />
     <img style="display:none;" id="foto2" src="" />
