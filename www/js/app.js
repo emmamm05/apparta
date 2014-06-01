@@ -166,54 +166,127 @@ app.run(function(amMoment) {
     amMoment.changeLanguage('es');
 });
 
-app.factory('cordovaReady', function() {
-  return function (fn) {
 
-    var queue = [];
+/*************************************************************************************/
+/********************************       cordova      *********************************/
+/*************************************************************************************/
+app.factory('cordovaReady', function ($q, $rootScope, $document) {
+        var deferred = $q.defer();
+        $document.bind('deviceready', function () {
+            $rootScope.$apply(deferred.resolve);
+        });
 
-    var impl = function () {
-      queue.push(Array.prototype.slice.call(arguments));
-    };
+        return {
+            ready: function () {
+                return deferred.promise;
+            }
+        };
+    })
+    .run(function (cordovaReady) {});
 
-    document.addEventListener('deviceready', function () {
-      queue.forEach(function (args) {
-        fn.apply(this, args);
-      });
-      impl = fn;
-    }, false);
+var Camera = Camera || {
+    PictureSourceType: {
+        PHOTOLIBRARY : 0,
+        CAMERA : 1,
+        SAVEDPHOTOALBUM : 2
+    },
+    DestinationType: {
+        DATA_URL : 0,
+        FILE_URI : 1,
+        NATIVE_URI : 2
+    },
+    EncodingType: {
+        JPEG : 0,
+        PNG : 1
+    },
+    MediaType: {
+        PICTURE: 0,
+        VIDEO: 1,
+        ALLMEDIA : 2
+    },
+    Direction: {
+        BACK : 0,
+        FRONT : 1
+    }
+};
 
-    return function () {
-      return impl.apply(this, arguments);
-    };
-  };
-});
+app.factory('geolocation', function ($q, $window, cordovaReady) {
+        var idCounter = 0;
+        var watchMap = {};
 
-app.factory('geolocation', function ($rootScope, cordovaReady) {
+        return {
+            getCurrentPosition: function (onSuccess, onError, options) {
+                cordovaReady.ready().then(function () {
+                    $window.navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+                });
+            },
+            watchPosition: function (onSuccess, onError, options) {
+                var watchId = (++idCounter).toString(10);
+                cordovaReady.ready().then(function () {
+                    watchMap[watchId] = $window.navigator.geolocation.watchPosition(onSuccess, onError, options);
+                });
+                return watchId;
+            },
+            clearWatch: function (watchId) {
+                if (watchMap[watchId]) {
+                    cordovaReady.ready().then(function () {
+                        $window.navigator.geolocation.clearWatch(watchMap[watchId]);
+                        delete watchMap[watchId];
+                    });
+                }
+            }
+        };
+    });
+
+app.factory('camera', function ($q, $window, cordovaReady) {
+        return {
+            getPicture: function (onSuccess, onError, options) {
+                cordovaReady.ready().then(function () {
+                    $window.navigator.camera.getPicture(onSuccess, onError, options);
+                });
+            },
+            cleanup: function (onSuccess, onError) {
+                cordovaReady.ready().then(function () {
+                    $window.navigator.camera.cleanup(onSuccess, onError);
+                });
+            },
+            PictureSourceType: Camera.PictureSourceType,
+            DestinationType: Camera.DestinationType,
+            EncodingType: Camera.EncodingType,
+            MediaType: Camera.MediaType,
+            Direction: Camera.Direction
+        };
+    });
+/*
+app.factory('camera', function ($rootScope, cordovaReady) {
   return {
-    getCurrentPosition: cordovaReady(function (onSuccess, onError, options) {
-      navigator.geolocation.getCurrentPosition(function () {
-        var that = this,
-          args = arguments;
+    getPhoto: cordovaReady(function (onSuccess, onError, options) {
+      navigator.camera.getPicture(
+		function () {
+			alert("navigator.camera.getPicture");
+			var that = this,
+			  args = arguments;
 
-        if (onSuccess) {
-          $rootScope.$apply(function () {
-            onSuccess.apply(that, args);
-          });
-        }
-      }, function () {
-        var that = this,
-          args = arguments;
-
-        if (onError) {
-          $rootScope.$apply(function () {
-            onError.apply(that, args);
-          });
-        }
-      },
-      options);
+			if (onSuccess) {
+			  alert("onSuccess");
+			  $rootScope.$apply(function () {
+			    onSuccess.apply(that, args);
+			  });
+			}
+		}, 
+		function() { 
+			toaster.pop('error', "¡Lo sentimos!", 'No se ha podido cargar la fotograf&iacute;a', null, 'trustedHtml'); 
+		}, 
+		{ 
+			quality: 50, 
+        		destinationType: destinationType.DATA_URL,
+        		sourceType: source 
+		}
+	);
     })
   };
 });
+*/
 
 window.onload = function() { 
   var txts = document.getElementsByTagName('textarea') 
