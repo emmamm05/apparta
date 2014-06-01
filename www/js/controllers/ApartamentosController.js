@@ -7,8 +7,8 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   }]);
  
 
-app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
+app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams', '$http',
+  function($scope, geolocation, $routeParams, $http) {
     //$scope.item = ApartamentosAPIService.CREATE;
     $scope.item = {	genero: 'unisex',
     				opcion_agua: false,
@@ -22,6 +22,12 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$routeParams', '$http',
 						{src: 'img/add_img.png'}
 			    	]
     };
+
+    geolocation.getCurrentPosition(function (position) {
+	    $scope.item.ubicacion_latitud =  position.coords.latitude;
+	    $scope.item.ubicacion_longitud =  position.coords.longitude;
+	} );
+
     $scope.crearAparta = function(){
       console.debug($scope.item);
       $http({method: 'POST', url: root + "/apartamentos",
