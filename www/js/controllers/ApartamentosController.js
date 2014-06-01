@@ -7,8 +7,8 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   }]);
  
 
-app.controller('AgregarApartamentoCtrl', ['$scope', 'Camera', '$routeParams', '$http',
-  function($scope, Camera, $routeParams, $http) {
+app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera', '$routeParams', '$http',
+  function($scope, geolocation, camera, $routeParams, $http) {
     //$scope.item = ApartamentosAPIService.CREATE;
     $scope.item = {	genero: 'unisex',
     				opcion_agua: false,
@@ -23,15 +23,23 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'Camera', '$routeParams', '$
 			    	]
     };
 
-   
+ geolocation.getCurrentPosition(function(position) {
+            $scope.$apply(function() {
+		$scope.item.ubicacion_latitud =  position.coords.latitude;
+	    	$scope.item.ubicacion_longitud =  position.coords.longitude;
+            });
+        }, function(error) {
+            $scope.$apply(function() {
+                $scope.error = error;
+            });
+        }, {});  
 /*
  geolocation.getCurrentPosition(function (position) {
-	    $scope.item.ubicacion_latitud =  position.coords.latitude;
-	    $scope.item.ubicacion_longitud =  position.coords.longitude;
+	    
 	} );
 */
 	$scope.getPhoto = function(index){	
-		Camera.getPicture(function(image) {
+		camera.getPicture(function(image) {
 			    $scope.$apply(function() {
 				$scope.item.fotos[index].src = "data:image/jpeg;base64," + image;
 			    });
