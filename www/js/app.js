@@ -3,7 +3,6 @@ var app = angular.module('Apparta', [
   "ngTouch",
   "ngAnimate",
   "mobile-angular-ui",
-  "angular-carousel",
   "angularMoment",
   "gd.ui.jsonexplorer",
   "toaster"
