@@ -6,7 +6,8 @@ var app = angular.module('Apparta', [
   "angular-carousel",
   "angularMoment",
   "gd.ui.jsonexplorer",
-  "toaster"
+  "toaster",
+  "google-maps"
 ]);
 
 app.config(['$routeProvider',
@@ -18,7 +19,7 @@ app.config(['$routeProvider',
       }).
       when('/agregar-apartamento', {
         templateUrl: 'partials/agregar-apartamento.html',
-        controller: 'AgregarApartamentoCtrl'
+        controller: 'AgregarApartamentoCtrl',
       }).
       when('/mis-apartamentos', {
         templateUrl: 'partials/mis-apartamentos.html',
@@ -45,6 +46,8 @@ app.config(['$routeProvider',
         redirectTo: '/home'
       });
   }]);
+
+
 
 
 app.directive('fundooRating', function () {

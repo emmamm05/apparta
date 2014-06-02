@@ -42,6 +42,13 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams
 						{src: 'img/add_img.png'}
 			    	]
     };
+	    $scope.map = {
+	    center: {
+	        latitude: 9.855756503226328,
+	        longitude: -83.91060333698988
+	    },
+	    zoom: 17
+	};
 
     geolocation.getCurrentPosition(function (position) {
 	    $scope.item.ubicacion_latitud =  position.coords.latitude;
