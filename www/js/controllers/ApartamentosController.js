@@ -50,24 +50,51 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams
 	    zoom: 17
 	};
 
-    geolocation.getCurrentPosition(function (position) {
-	    $scope.item.ubicacion_latitud =  position.coords.latitude;
-	    $scope.item.ubicacion_longitud =  position.coords.longitude;
+ geolocation.getCurrentPosition(function(position) {
+            $scope.$apply(function() {
+			$scope.item.ubicacion_latitud =  position.coords.latitude;
+	    	$scope.item.ubicacion_longitud =  position.coords.longitude;
+            });
+        }, function(error) {
+            $scope.$apply(function() {
+                $scope.error = error;
+            });
+        }, {});  
+/*
+ geolocation.getCurrentPosition(function (position) {
+	    
 	} );
-
-	$scope.crearAparta = function(){
-	    $http({method: 'POST', url: root + "/apartamentos",
-		headers:{ 'Accept':'*/*'},
-		data: $scope.item }).
-		success(function(data, status, headers, config) {
-		  console.log("POST Sucess");
-		  toaster.pop('success', "¡Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
-		}).
-		error(function(data, status, headers, config) {
-		  console.log("POST error");
+*/
+	$scope.getPhoto = function(index){	
+		camera.getPicture(function(image) {
+			    $scope.$apply(function() {
+				$scope.item.fotos[index].src = "data:image/jpeg;base64," + image;
+			    });
+			}, function(error) {
+			    $scope.$apply(function() {
+				$scope.error = error;
+			    });
+			}, {
+			    destinationType: Camera.DestinationType.DATA_URL,
+			    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+			    encodingType: Camera.EncodingType.JPEG,
+			    quality: 50
+			});
+	}
+    $scope.crearAparta = function(){
+      console.debug($scope.item);
+      $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
+	headers:{ 'Accept':'*/*'},
+	data: $scope.item }).
+	success(function(data, status, headers, config) {
+	  console.log("POST Sucess");
+	  toaster.pop('success', "??Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
+	}).
+	error(function(data, status, headers, config) {
+	  console.log("POST error");
 		  console.log('$scope.crearAparta: status:'+status);
 		  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
-		});
+	});
     };
   }]);
 
@@ -280,7 +307,7 @@ app.controller('EditarApartamentoCtrl', ['$scope', '$routeParams', 'toaster',
   function($scope, $routeParams, toaster) {
 
      $scope.save = function(){
-        toaster.pop('success', "¡Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
+        toaster.pop('success', "??Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
     };
     
      
