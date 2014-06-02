@@ -1,5 +1,25 @@
 var root = "http://localhost:8080/api";
 
+app.service('ApartamentosService',['$http',function($http){
+	var results = [];
+	var item;
+	this.buscarAparta = function(){
+	console.log("buscando... "+this.item);
+	$http({method: 'GET', url: root + "/apartamentos/search",
+	  headers:{ 'Accept':'*/*'},
+	  data: item }).
+	  success(function(data, status, headers, config) {
+	    console.log("POST Sucess");
+	    console.log();
+	  }).
+	  error(function(data, status, headers, config) {
+	    console.log("POST error");
+	    console.log(status);
+	    console.log(data);
+	  });
+    };
+}]);
+
 app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
       //Falta hay q hacer lo de facebook 
@@ -7,8 +27,8 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   }]);
  
 
-app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams', '$http',
-  function($scope, geolocation, $routeParams, $http) {
+app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams', '$http','toaster',
+  function($scope, geolocation, $routeParams, $http,toaster) {
     //$scope.item = ApartamentosAPIService.CREATE;
     $scope.item = {	genero: 'unisex',
     				opcion_agua: false,
@@ -28,51 +48,24 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams
 	    $scope.item.ubicacion_longitud =  position.coords.longitude;
 	} );
 
-    $scope.crearAparta = function(){
-      console.debug($scope.item);
-      $http({method: 'POST', url: root + "/apartamentos",
-	headers:{ 'Accept':'*/*'},
-	data: $scope.item }).
-	success(function(data, status, headers, config) {
-	  console.log("POST Sucess");
-	  toaster.pop('success', "¡Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
-	}).
-	error(function(data, status, headers, config) {
-	  console.log("POST error");
-	  console.log(status);
-	});
+	$scope.crearAparta = function(){
+	    $http({method: 'POST', url: root + "/apartamentos",
+		headers:{ 'Accept':'*/*'},
+		data: $scope.item }).
+		success(function(data, status, headers, config) {
+		  console.log("POST Sucess");
+		  toaster.pop('success', "¡Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
+		}).
+		error(function(data, status, headers, config) {
+		  console.log("POST error");
+		  console.log('$scope.crearAparta: status:'+status);
+		  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
+		});
     };
-/*
-    // Called when a photo is successfully retrieved
-    //
-    $scope.onPhotoURISuccess = function (imageURI, idPhoto, index) {
-
-      var largeImage = document.getElementById(idPhoto);
-
-      // Unhide image elements
-      //
-      $scope.item.fotos[index] = imageURI;
-    };
-
-    // A button will call this function
-    //
-    $scope.getPhoto = function (source, idPhoto, index) {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(function(imageURI) { $scope.onPhotoURISuccess(imageURI, idPhoto, index); }, $scope.onFail, { quality: 50, 
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
-    };
-
-    // Called if something bad happens.
-    // 
-    $scope.onFail = function (message) {
-      alert('Failed because: ' + message);
-    };
-*/
   }]);
 
-app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http',
-  function($scope, $routeParams,$http) {
+app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http','ApartamentosService',
+  function($scope, $routeParams,$http, ApartamentosService) {
      $scope.item = {	genero: 	'unisex',  	
 			calificacion: 	3, 
 			cercania_tec: 	5
@@ -85,26 +78,17 @@ app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http',
 	    minPrice: 1000,
 	    maxPrice: 4000
 	};
-     $scope.buscarAparta = function(){
-	console.debug($scope.item);
-	$http({method: 'GET', url: root + "/apartamentos/search",
-	  headers:{ 'Accept':'*/*'},
-	  data: $scope.item }).
-	  success(function(data, status, headers, config) {
-	    console.log("POST Sucess");
-	  }).
-	  error(function(data, status, headers, config) {
-	    console.log("POST error");
-	    console.log(status);
-	  });
-      };
-  }]);
+	ApartamentosService.item = $scope.item;
+	$scope.buscarAparta = ApartamentosService.buscarAparta;
+	console.log("BuscarApartamentoCtrl/buscarAparta: ",ApartamentosService.item);
+}]);
 
 
 app.controller('ResultadosCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
+	console.log('results: '+ApartamentosService.results);
 	$scope.results = [
 	    {'titulo': 'Barato y espacioso',
 	     'calificacion': '3',
