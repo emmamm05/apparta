@@ -28,7 +28,7 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
  
 
 app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$routeParams', '$http','toaster',
-  function($scope, geolocation, $routeParams, $http,toaster) {
+  function($scope, geolocation, camera, $routeParams, $http, toaster) {
     //$scope.item = ApartamentosAPIService.CREATE;
     $scope.item = {	genero: 'unisex',
     				opcion_agua: false,
@@ -42,7 +42,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 						{src: 'img/add_img.png'}
 			    	]
     };
-	    $scope.map = {
+	$scope.map = {
 	    center: {
 	        latitude: 9.855756503226328,
 	        longitude: -83.91060333698988
@@ -50,7 +50,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 	    zoom: 17
 	};
 
- geolocation.getCurrentPosition(function(position) {
+ 	geolocation.getCurrentPosition(function(position) {
             $scope.$apply(function() {
 			$scope.item.ubicacion_latitud =  position.coords.latitude;
 	    	$scope.item.ubicacion_longitud =  position.coords.longitude;
@@ -80,18 +80,18 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
     $scope.crearAparta = function(){
       console.debug($scope.item);
       $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
-	headers:{ 'Accept':'*/*'},
-	data: $scope.item }).
-	success(function(data, status, headers, config) {
-	  console.log("POST Sucess");
-	  toaster.pop('success', "??Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
-	}).
-	error(function(data, status, headers, config) {
-	  console.log("POST error");
-		  console.log('$scope.crearAparta: status:'+status);
-		  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
-	});
-    };
+		headers:{ 'Accept':'*/*'},
+		data: $scope.item }).
+		success(function(data, status, headers, config) {
+		  console.log("POST Sucess");
+		  toaster.pop('success', "??Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
+		}).
+		error(function(data, status, headers, config) {
+		  console.log("POST error");
+			  console.log('$scope.crearAparta: status:'+status);
+			  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
+		});
+	    };
   }]);
 
 app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http','ApartamentosService',
