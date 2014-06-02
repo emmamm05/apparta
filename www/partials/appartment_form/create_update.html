@@ -44,7 +44,7 @@
 			placeholder="Precio de la mensualidad en colones"
 	       />
 
-		<input
+		<textarea
 			bs-form-control
 			type="text" 
 			ng-model="item.direccion_fisica"
@@ -52,7 +52,12 @@
 			label-class="col-xs-3 col-sm-2 col-lg-1" 
 			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
 			placeholder="Sea especifico"
-	       />
+	       ></textarea>
+
+		<div 	ng-click="toggle('rightSidebar')"  
+			class="	btn btn-default 
+				col-xs-offset-3 col-sm-offset-2 col-lg-offset-1 
+				col-xs-9 col-sm-10 col-lg-11 ">Agregar mapa</div>
 
 	</div>
 
@@ -164,3 +169,13 @@
 
 	</div>
    </form>
+
+	<div content-for="sidebar-right">
+		<!-- aqui inicia el mapa -->
+		direccion_fisica: {{item.direccion_fisica}}
+		<br/>
+		ubicacion_latitud: {{item.ubicacion_latitud}}
+		<br/>
+		ubicacion_longitud: {{item.ubicacion_longitud}}
+		<!-- aqui finaliza el mapa -->
+	</div>

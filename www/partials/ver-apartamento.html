@@ -81,18 +81,6 @@
 <button type="button" class="btn btn-primary btn-lg btn-block">Contactar al anunciante</button>
 </div>
 
-<br/>
-<br/>
-<b>en el mapa va:</b><br/>
-direccion_fisica: {{item.direccion_fisica}}
-<br/>
-ubicacion_latitud: {{item.ubicacion_latitud}}
-<br/>
-ubicacion_longitud: {{item.ubicacion_longitud}}
-<br/>
-<br/>
-<br/>
-
 <!-- new comment -->
 <div bs-panel title="Agregar un comentario" class="form-panel">
 	<textarea
@@ -133,11 +121,21 @@ ubicacion_longitud: {{item.ubicacion_longitud}}
 
     <div bs-panel class="form-actions">
       <div content-for="navbarAction">
-        <button class="btn btn-primary">
-          <i class="icon-area"></i>Mapa
-        </button>
+          <div ng-click="toggle('rightSidebar')" class="btn btn-navbar">
+            <i class="icon-area"></i> Mapa
+          </div>
       </div>
     </div>
+
+	<div content-for="sidebar-right">
+		<!-- aqui inicia el mapa -->
+		direccion_fisica: {{item.direccion_fisica}}
+		<br/>
+		ubicacion_latitud: {{item.ubicacion_latitud}}
+		<br/>
+		ubicacion_longitud: {{item.ubicacion_longitud}}
+		<!-- aqui finaliza el mapa -->
+	</div>
 
  </div>
 </div>

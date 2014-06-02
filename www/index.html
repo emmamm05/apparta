@@ -24,7 +24,7 @@
 
   <div ng-include="'partials/sidebar.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar"></div>
 
-  <div ng-include="'partials/sidebarRight.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebarMap"></div>
+  <div yield-to="sidebar-right" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebar"></div>
 
   <div class="app">
     <!-- Navbar -->
