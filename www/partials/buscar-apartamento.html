@@ -5,24 +5,21 @@
 
 <div class="scrollable">
  <div class="scrollable-content section">
-   
-   <form action="" id="">
-	<!-- price -->
-	<div bs-panel title="Mensualidad" class="form-panel">
-		<input 	placeholder="Minimo"
-			label=""
-			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
-			type="number" 
-			ng-model="item.min_mensualidad" 
-			bs-form-control="">
-		</input>
-		<input 	placeholder="Maximo"
-			label=""
-			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
-			type="number" 
-			ng-model="item.max_mensualidad" 
-			bs-form-control="">
-		</input>
+   <div id="form">
+
+	<div class="form-panel panel" >
+	    <div class="panel-heading">
+		<h2 class="panel-title">Mensualidad</h2>
+	    </div>
+	    <div class="panel-body">
+		₡{{item.min_mensualidad}}
+		<slider	floor="30000" 
+			ceiling="500000" 
+			ng-model-low="item.min_mensualidad" 
+			ng-model-high="item.max_mensualidad"
+			step="10000"></slider>
+		₡{{item.max_mensualidad}}
+	    </div>
 	</div>
 
 	<!-- location -->
@@ -63,7 +60,7 @@
         </a>
       </div>
     </div>
-   </form>
+   </div>
 
  </div>
 </div>

@@ -6,7 +6,8 @@ var app = angular.module('Apparta', [
   "angularMoment",
   "gd.ui.jsonexplorer",
   "toaster",
-  "google-maps"
+  "google-maps",
+  "uiSlider"
 ]);
 
 app.config(['$routeProvider',

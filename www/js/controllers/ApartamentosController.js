@@ -98,16 +98,11 @@ app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http','Apart
   function($scope, $routeParams,$http, ApartamentosService) {
      $scope.item = {	genero: 	'unisex',  	
 			calificacion: 	3, 
-			cercania_tec: 	5
+			cercania_tec: 	5,
+			min_mensualidad:50000,
+			max_mensualidad:300000
 		};
-	$scope.demo2 = {
-	    range: {
-		min: 0,
-		max: 10050
-	    },
-	    minPrice: 1000,
-	    maxPrice: 4000
-	};
+
 	ApartamentosService.item = $scope.item;
 	$scope.buscarAparta = ApartamentosService.buscarAparta;
 	console.log("BuscarApartamentoCtrl/buscarAparta: ",ApartamentosService.item);
