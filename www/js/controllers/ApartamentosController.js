@@ -27,7 +27,7 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   }]);
  
 
-app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams', '$http','toaster',
+app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$routeParams', '$http','toaster',
   function($scope, geolocation, $routeParams, $http,toaster) {
     //$scope.item = ApartamentosAPIService.CREATE;
     $scope.item = {	genero: 'unisex',
@@ -60,11 +60,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', '$routeParams
                 $scope.error = error;
             });
         }, {});  
-/*
- geolocation.getCurrentPosition(function (position) {
-	    
-	} );
-*/
+
 	$scope.getPhoto = function(index){	
 		camera.getPicture(function(image) {
 			    $scope.$apply(function() {
