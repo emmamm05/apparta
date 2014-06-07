@@ -44,13 +44,12 @@
 
 	<!-- bedrooms -->
 	<div bs-panel title="Habitaciones disponibles" class="form-panel">
-		<input 	placeholder="Cantidad"
-			label=""
-			class="ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number" 
-			type="number" 
-			ng-model="item.habitaciones" 
-			bs-form-control="">
-		</input>
+		<div 	fundoo-rating 
+			icon="bethroom" 
+			color="blue" 
+			rating-value="item.habitaciones" 
+			max="5" 
+			on-rating-selected="saveRatingToServer(item.habitaciones)"></div>
 	</div>
 
     <div bs-panel class="form-actions">

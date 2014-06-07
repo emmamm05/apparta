@@ -129,13 +129,15 @@ ul.rating {
   text-align: left;
 }
 
-.rating .filled {
+.rating .filled.yellow{
   color: #ffcd02;
 }
-
-
-
-
+.rating .filled.black{
+  color: #000000;
+}
+.rating .filled.blue{
+  color: #007AFF;
+}
 
 
 /* Main carousel style */

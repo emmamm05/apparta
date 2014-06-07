@@ -54,13 +54,15 @@ app.directive('fundooRating', function () {
     return {
       restrict: 'A',
       template: '<ul class="rating">' +
-                  '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
-                    '<i class="icon-star"></i>' +
+                  '<li ng-repeat="star in stars" ng-class="star" class="{{color}}" ng-click="toggle($index)">' +
+                    '<i class="icon-{{icon}}"></i>' +
                   '</li>' +
                 '</ul>',
       scope: {
         ratingValue: '=',
         max: '=',
+        icon: '@',
+        color: '@',
         readonly: '@',
         onRatingSelected: '&'
       },
@@ -79,6 +81,8 @@ app.directive('fundooRating', function () {
           scope.onRatingSelected({rating: index + 1});
         };
         scope.$watch('ratingValue', function(oldVal, newVal) {
+	  scope.icon  = scope.icon 	|| "star";
+	  scope.color = scope.color 	|| "yellow";
           if (newVal) {
             updateStars();
           }

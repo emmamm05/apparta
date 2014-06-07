@@ -84,7 +84,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 		data: $scope.item }).
 		success(function(data, status, headers, config) {
 		  console.log("POST Sucess");
-		  toaster.pop('success', "??Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
+		  toaster.pop('success', "Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
 		}).
 		error(function(data, status, headers, config) {
 		  console.log("POST error");
@@ -100,7 +100,8 @@ app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http','Apart
 			calificacion: 	3, 
 			cercania_tec: 	5,
 			min_mensualidad:50000,
-			max_mensualidad:300000
+			max_mensualidad:300000,
+			habitaciones:	2
 		};
 
 	ApartamentosService.item = $scope.item;
