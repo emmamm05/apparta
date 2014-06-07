@@ -1,0 +1,35 @@
+<div content-for="title">
+  <span>Buscar usuarios</span>
+</div>
+
+<div class="scrollable">
+ <div class="scrollable-content section">
+
+	<div class="search-box row">
+		<div class="input-group">
+		  <span class="input-group-addon"><i class="icon-search"></i></span>
+		  <input type="text" class="form-control" ng-model="searchString" placeholder="Buscar...">
+		</div>
+	</div>
+        <!-- item -->
+            <div class="col-xs-12 col-md-6 apartas-item" ng-repeat="item in results | searchFor:searchString">
+                <div class="media">
+                    <div class="col-xs-2 col-lg-2"><a href="#">
+                    	<img class="img-list-apartas"  src="http://graph.facebook.com/{{item.oauth_id}}/picture" /></a>
+                    </div>
+                    <div class="media-body col-xs-10 col-lg-10">
+                        <h4 class="media-heading">
+                        	<a href="#" target="_parent">{{item.nombre+" "+item.apellido}}</a> 
+                        </h4>
+                        <div class="list-inline">alguna descripcion </div>
+                    </div>
+                </div>
+            </div><!-- / item -->
+
+    <div bs-panel class="form-actions">
+      <div content-for="navbarAction">
+      </div>
+    </div>
+
+ </div>
+</div>

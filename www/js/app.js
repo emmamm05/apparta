@@ -37,6 +37,14 @@ app.config(['$routeProvider',
         templateUrl: 'partials/editar-apartamento.html',
         controller: 'EditarApartamentoCtrl'
       }).
+      when('/buscar-usuario', {
+        templateUrl: 'partials/buscar-usuario.html',
+        controller: 'BuscarUsuarioCtrl'
+      }).
+      when('/ver-usuario', {
+        templateUrl: 'partials/ver-usuario.html',
+        controller: 'VerAUsuarioCtrl'
+      }).
       when('/home', {
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
@@ -264,36 +272,27 @@ app.factory('camera', function ($q, $window, cordovaReady) {
             Direction: Camera.Direction
         };
     });
-/*
-app.factory('camera', function ($rootScope, cordovaReady) {
-  return {
-    getPhoto: cordovaReady(function (onSuccess, onError, options) {
-      navigator.camera.getPicture(
-		function () {
-			alert("navigator.camera.getPicture");
-			var that = this,
-			  args = arguments;
 
-			if (onSuccess) {
-			  alert("onSuccess");
-			  $rootScope.$apply(function () {
-			    onSuccess.apply(that, args);
-			  });
-			}
-		}, 
-		function() { 
-			toaster.pop('error', "¡Lo sentimos!", 'No se ha podido cargar la fotograf&iacute;a', null, 'trustedHtml'); 
-		}, 
-		{ 
-			quality: 50, 
-        		destinationType: destinationType.DATA_URL,
-        		sourceType: source 
+
+/**************************** filters ************************************/
+
+app.filter('searchFor', function(){
+	return function(arr, searchString){
+		if(!searchString){
+			return arr;
 		}
-	);
-    })
-  };
+		var result = [];
+		searchString = searchString.toLowerCase();
+		// Using the forEach helper method to loop through the array
+		angular.forEach(arr, function(item){
+			if(item.nombre.toLowerCase().indexOf(searchString) !== -1 || item.apellido.toLowerCase().indexOf(searchString) !== -1 ){
+				result.push(item);
+			}
+		});
+		return result;
+	};
 });
-*/
+
 
 window.onload = function() { 
   var txts = document.getElementsByTagName('textarea') 

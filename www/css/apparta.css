@@ -71,9 +71,24 @@
 }
 /*
  * 
- * SEARCH APARTA
+ * SEARCH
  *
  */
+.search-box {
+    min-height: 20px;
+    padding: 19px 29px;
+    margin-bottom: 20px;
+    background-color: #007AFF;
+    border: 1px solid #E3E3E3;
+}
+.search-box .input-group-addon {
+    border-radius: 0px !important;
+    padding-left: 6px;
+    padding-right: 0px;
+}
+.search-box .input-group .form-control:last-child{
+    border-left: 0px none;
+}
 .radio-group,
 .checkbox-group,
 .services-group,
