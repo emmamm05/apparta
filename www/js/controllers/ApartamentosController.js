@@ -138,9 +138,10 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
-	console.log('results: '+ApartamentosService.results);
+	//console.log('results: '+ApartamentosService.results);
 	$scope.results = [
-	    {'titulo': 'Barato y espacioso',
+	    {'id': '1',
+	     'titulo': 'Barato y espacioso',
 	     'calificacion': '3',
 	     'area': '220',
 	     'habitaciones': '5',
@@ -154,7 +155,8 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
 			{src: 'http://lorempixel.com/250/200/transport/'},
 			{src: 'http://lorempixel.com/250/200/technics/'}
 		    	]},
-	    {'titulo': 'Oferta!!',
+	    {'id': '2',
+	     'titulo': 'Oferta!!',
 	     'calificacion': '5',
 	     'area': '220',
 	     'habitaciones': '3',
@@ -168,7 +170,8 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
 			{src: 'http://lorempixel.com/250/200/transport/'},
 			{src: 'http://lorempixel.com/250/200/technics/'}
 		    	]},
-	    {'titulo': 'Primeros ingresos',
+	    {'id': '3',
+	     'titulo': 'Primeros ingresos',
 	     'calificacion': '1',
 	     'area': '320',
 	     'habitaciones': '4',
@@ -187,7 +190,9 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
 
 app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-     $scope.item = {	descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
+     console.log($routeParams.id);
+     $scope.item = {	id: '1',
+	     		descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
 			direccion_fisica: 	'direccion del aparta', 
 			area: 			230,  	
 			ubicacion_latitud: 	5.342, 
@@ -276,7 +281,8 @@ app.controller('MisApartamentosCtrl', ['$scope', '$routeParams',
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
 	$scope.results = [
-	    {'titulo': 'Barato y espacioso',
+	    {'id': '1',
+	     'titulo': 'Barato y espacioso',
 	     'calificacion': '3',
 	     'area': '220',
 	     'habitaciones': '5',
@@ -289,7 +295,8 @@ app.controller('MisApartamentosCtrl', ['$scope', '$routeParams',
 			{src: 'http://lorempixel.com/250/200/transport/'},
 			{src: 'http://lorempixel.com/250/200/technics/'}
 		    	]},
-	    {'titulo': 'Oferta!!',
+	    {'id': '2',
+	     'titulo': 'Oferta!!',
 	     'calificacion': '5',
 	     'area': '220',
 	     'habitaciones': '3',
@@ -302,7 +309,8 @@ app.controller('MisApartamentosCtrl', ['$scope', '$routeParams',
 			{src: 'http://lorempixel.com/250/200/transport/'},
 			{src: 'http://lorempixel.com/250/200/technics/'}
 		    	]},
-	    {'titulo': 'Primeros ingresos',
+	    {'id': '3',
+	     'titulo': 'Primeros ingresos',
 	     'calificacion': '1',
 	     'area': '320',
 	     'habitaciones': '4',
@@ -321,13 +329,14 @@ app.controller('MisApartamentosCtrl', ['$scope', '$routeParams',
 
 app.controller('EditarApartamentoCtrl', ['$scope', '$routeParams', 'toaster',
   function($scope, $routeParams, toaster) {
-
+     console.log($routeParams.id);
      $scope.save = function(){
         toaster.pop('success', "??Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
     };
     
      
-     $scope.item = {	descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
+     $scope.item = {	id: '1',
+			descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
 			direccion_fisica: 	'direccion del aparta', 
 			area: 			230,  	
 			ubicacion_latitud: 	5.342, 

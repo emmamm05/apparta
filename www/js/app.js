@@ -29,11 +29,11 @@ app.config(['$routeProvider',
         templateUrl: 'partials/buscar-apartamento.html',
         controller: 'BuscarApartamentoCtrl'
       }).
-      when('/ver-apartamento', {
+      when('/ver-apartamento/:id', {
         templateUrl: 'partials/ver-apartamento.html',
         controller: 'VerApartamentoCtrl'
       }).
-      when('/editar-apartamento', {
+      when('/editar-apartamento/:id', {
         templateUrl: 'partials/editar-apartamento.html',
         controller: 'EditarApartamentoCtrl'
       }).
@@ -41,7 +41,7 @@ app.config(['$routeProvider',
         templateUrl: 'partials/buscar-usuario.html',
         controller: 'BuscarUsuarioCtrl'
       }).
-      when('/ver-usuario', {
+      when('/ver-usuario/:id', {
         templateUrl: 'partials/ver-usuario.html',
         controller: 'VerAUsuarioCtrl'
       }).
