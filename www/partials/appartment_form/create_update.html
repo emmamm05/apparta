@@ -55,7 +55,7 @@
 	       ></textarea>
 
 		<div 	ng-click="toggle('rightSidebar')"  
-			class="	btn btn-default 
+			class="	btn btn-gray 
 				col-xs-offset-3 col-sm-offset-2 col-lg-offset-1 
 				col-xs-9 col-sm-10 col-lg-11 ">Agregar mapa</div>
 
@@ -109,7 +109,7 @@
 		<input
 			bs-form-control
 			type="number" 
-			ng-model="item.ubicacion_latitud"
+			ng-model="map.center.latitude"
 			label="ubicacion_latitud" 
 			label-class="col-xs-3 col-sm-2 col-lg-1" 
 			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
@@ -117,7 +117,7 @@
 		<input
 			bs-form-control
 			type="number" 
-			ng-model="item.ubicacion_longitud"
+			ng-model="map.center.longitude"
 			label="ubicacion_longitud" 
 			label-class="col-xs-3 col-sm-2 col-lg-1" 
 			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"

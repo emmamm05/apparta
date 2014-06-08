@@ -50,17 +50,14 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 	    zoom: 17
 	};
 
- 	geolocation.getCurrentPosition(
- 		function(position) {
+ 	geolocation.getCurrentPosition(function(position) {
             $scope.$apply(function() {
-				$scope.map.center.latitude  =  position.coords.latitude;
-		    	$scope.map.center.longitude =  position.coords.longitude;
-		    	console.log("geolocation"+JSON.stringify(position.coords));
+		$scope.map.center.latitude 	=  position.coords.latitude;
+	    	$scope.map.center.longitude 	=  position.coords.longitude;
             });
         }, function(error) {
             $scope.$apply(function() {
                 $scope.error = error;
-                 console.log("geolocation error: "+error);
             });
         }, {});  
 
