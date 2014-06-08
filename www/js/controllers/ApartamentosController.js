@@ -188,6 +188,143 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams',
 	  ];
   }]);
 
+
+
+app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+	$scope.results = [
+	    {'id': '1',
+	     'titulo': 'Barato y espacioso',
+	     'calificacion': '3',
+	     'area': '220',
+	     'habitaciones': '5',
+	     'sexo': 'male',
+	     'cercania_tec': '1.8', 
+	     'mensualidad': 150000, 
+	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'fotos':[
+			{src: 'http://lorempixel.com/250/200/city/'},
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/transport/'},
+			{src: 'http://lorempixel.com/250/200/technics/'}
+		    	],
+	     'interesados':[
+		    {	id: 		'1',
+			nombre: 	'Bairon',
+			apellido: 	'Perez',
+			oauth_id: 	'1763484990',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'2',
+			nombre: 	'Karla',
+			apellido: 	'Madrigal',
+			oauth_id: 	'100001429851672',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'1',
+			nombre: 	'Bairon',
+			apellido: 	'Perez',
+			oauth_id: 	'1763484990',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'2',
+			nombre: 	'Karla',
+			apellido: 	'Madrigal',
+			oauth_id: 	'100001429851672',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'3',
+			nombre: 	'Emmanuel',
+			apellido: 	'Mora',
+			oauth_id: 	'1287630773',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'}
+		  ]},
+	    {'id': '2',
+	     'titulo': 'Oferta!!',
+	     'calificacion': '5',
+	     'area': '220',
+	     'habitaciones': '3',
+	     'sexo': 'unisex',
+	     'cercania_tec': '2.1',
+	     'mensualidad': 70000, 
+	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'fotos':[
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/technics/'},
+			{src: 'http://lorempixel.com/250/200/transport/'},
+			{src: 'http://lorempixel.com/250/200/technics/'}
+		    	],
+	     'interesados':[
+		    {	id: 		'2',
+			nombre: 	'Karla',
+			apellido: 	'Madrigal',
+			oauth_id: 	'100001429851672',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'3',
+			nombre: 	'Emmanuel',
+			apellido: 	'Mora',
+			oauth_id: 	'1287630773',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'}
+		  ]},
+	    {'id': '3',
+	     'titulo': 'Primeros ingresos',
+	     'calificacion': '1',
+	     'area': '320',
+	     'habitaciones': '4',
+	     'sexo': 'female',
+	     'cercania_tec': '7.2',
+	     'mensualidad': 320000, 
+	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
+	     'fotos':[
+			{src: 'http://lorempixel.com/250/200/transport/'},
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/abstract/'},
+			{src: 'http://lorempixel.com/250/200/technics/'}
+		    	],
+	     'interesados':[
+		    {	id: 		'1',
+			nombre: 	'Bairon',
+			apellido: 	'Perez',
+			oauth_id: 	'1763484990',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'2',
+			nombre: 	'Karla',
+			apellido: 	'Madrigal',
+			oauth_id: 	'100001429851672',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'1',
+			nombre: 	'Bairon',
+			apellido: 	'Perez',
+			oauth_id: 	'1763484990',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'},
+		    {	id: 		'2',
+			nombre: 	'Karla',
+			apellido: 	'Madrigal',
+			oauth_id: 	'100001429851672',
+			oauth_proveedor: 'facebook',
+			telefono:	 '8888-1234'}
+		  ]},
+	  ];
+
+
+	$scope.order = 'calificacion';
+	$scope.reverse = true;
+	$scope.interesadosMax  = 3;
+	interesadosMas = $scope.results-$scope.interesadosMax;
+	if(interesadosMas>0){
+		$scope.interesadosMas = "+"+interesadosMas;
+	} else{
+		$scope.interesadosMas = "";
+	}
+  }]);
+
+
 app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
      console.log($routeParams.id);

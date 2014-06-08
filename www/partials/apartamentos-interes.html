@@ -1,5 +1,5 @@
 <div content-for="title">
-  <span>Mis apartas</span>
+  <span>Apartamentos de inter&eacute;s</span>
 </div>
 
 
@@ -27,9 +27,8 @@
                             <li style="list-style: none">|</li>
                             <li><i class="icon-location"></i>{{item.cercania_tec}}Km</li>
                         </ul>
-			<div fundoo-rating rating-value="item.calificacion" max="5" readonly="true" icon="star" color="yellow" ></div>
+			<div imginteresados interesados="item.interesados" max="3"></div>
 			<h3 class="text-right admin-button" >
-				<a href="#/editar-apartamento"><i class="icon-edit"></i></a>
 				<a href="#overlay-delete" toggle="on" ><i class="icon-delete"></i></a>
 			</h3>
                     </div>
@@ -41,9 +40,9 @@
 
 
 <div overlay="overlay-delete">
-  <h4 class="overlay-title">&iquest;Desea eliminar el apartamento seleccionado?</h4>    
+  <h4 class="overlay-title">&iquest;Desea desuscribirse al apartamento seleccionado?</h4>    
   <p>
-    Si lo elimina perder&aacute; toda la informaci&oacute;n, estad&iacute;sticas y contacto con los posibles clientes.
+    Si se desuscribe perder&aacute; contacto con otros interesados.
   </p>
   <p toggle="off" bubble target="overlay-delete">
     <a href="#" class="btn btn-primary">Eliminar</a>
@@ -76,7 +75,7 @@
 
     <div bs-panel class="form-actions">
       <div content-for="navbarAction">
-        <a class="btn btn-primary" href="#/agregar-apartamento">
+        <a class="btn btn-primary" href="#/buscar-apartamento">
           Agregar
         </a>
       </div>

@@ -37,6 +37,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/editar-apartamento.html',
         controller: 'EditarApartamentoCtrl'
       }).
+      when('/apartamentos-interes', {
+        templateUrl: 'partials/apartamentos-interes.html',
+        controller: 'ApartamentosInteresCtrl'
+      }).
       when('/buscar-usuario', {
         templateUrl: 'partials/buscar-usuario.html',
         controller: 'BuscarUsuarioCtrl'
@@ -95,6 +99,66 @@ app.directive('fundooRating', function () {
     }
   });
 
+
+
+app.directive('imginteresados', function () {
+    return {
+      restrict: 'A',
+      template: '<ul class="interesados">' +
+                  '<li ng-repeat="interesado in interesados | limitTo:max">' +
+                    '<img  src="http://graph.facebook.com/{{interesado.oauth_id}}/picture" />' +
+                  '</li>' +
+                  '<li><span class="label label-success">{{interesadosMas}}</span></li>' +
+                '</ul>',
+      scope: {
+        max: '=',
+        interesados: '=',
+        interesadosMas: '&',
+      },
+      link: function(scope, elem, attrs) {
+		scope.interesadosMas = scope.interesados.length-scope.max;
+		if(scope.interesadosMas>0){
+			scope.interesadosMas = "+"+scope.interesadosMas;
+		} else{
+			scope.interesadosMas = "";
+		}
+      }
+    }
+  });
+
+app.directive('profile', function () {
+    return {
+      restrict: 'A',
+      template: '<div class="col-xs-12 profile">'+
+			'<img 	src="http://graph.facebook.com/{{user.oauth_id}}/picture"'+ 
+				'class="img-circle center-block img-responsive col-xs-6 col-sm-4 col-md-6 ">'+
+			'</img>'+		
+			'<h2 class="text-center">{{user.nombre+" "+user.apellido}}</h2>'+
+			'<div class="row">'+
+				'<div class="col-xs-10 col-xs-offset-1">'+
+					'<div 	ng-click="openSocialProfile(user.oauth_id, user.oauth_proveedor);"'+
+						'class="btn btn-block btn-social btn-facebook">'+
+						'<i class="icon-facebook"></i> Ver perfil'+
+					'</div>'+
+					'<a class="btn btn-block btn-social btn-phone" ng-href="tel:{{user.telefono}}" >'+
+						'<i class="icon-phone" ></i> Llamar'+
+					'</a>'+
+					'<a class="btn btn-block btn-social btn-info"'+ 
+						'ng-href="sms:{{user.telefono}}?body=Hola, vi su anuncio en Apparta y me interesa'+ 
+						'obtener más información del aparmentamento.">'+
+						'<i class="icon-mail"></i> Mensaje de texto'+
+					'</a>'+
+				'</div>'+
+			'</div>'+
+		'</div>',
+      scope: {
+        user: '=',
+      },
+      link: function(scope, elem, attrs) {
+
+      }
+    }
+  });
 
 /*
 app.config(function($routeProvider, $locationProvider) {
