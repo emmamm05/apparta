@@ -5,7 +5,7 @@
 	<!-- photo -->
 	<div bs-panel title="Fotograf&iacute;as" class="form-panel">
 		<div ng-repeat="foto in item.fotos" class="col-xs-3">
-                	<img src="{{foto.src}}" ng-click="getPhoto($index);" class="img-responsive " ></img> 
+                	<img src="{{foto.src}}" ng-click="getPhoto($index);" class="img-responsive " />
 		</div>
 	</div>
 
@@ -170,12 +170,12 @@
 	</div>
    </form>
 
+   	<google-map center="map.center" zoom="map.zoom" draggable='true'>
+ 		<marker ng-repeat="marker in markers" coords="marker.coords" options="marker.options" events="marker.events">
+        </marker>
+	</google-map>
+
 	<div content-for="sidebar-right">
-		<!-- aqui inicia el mapa -->
-		direccion_fisica: {{item.direccion_fisica}}
-		<br/>
-		ubicacion_latitud: {{item.ubicacion_latitud}}
-		<br/>
-		ubicacion_longitud: {{item.ubicacion_longitud}}
-		<!-- aqui finaliza el mapa -->
+
+
 	</div>

@@ -50,16 +50,38 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 	    zoom: 17
 	};
 
- 	geolocation.getCurrentPosition(function(position) {
+ 	geolocation.getCurrentPosition(
+ 		function(position) {
             $scope.$apply(function() {
-			$scope.item.ubicacion_latitud =  position.coords.latitude;
-	    	$scope.item.ubicacion_longitud =  position.coords.longitude;
+				$scope.map.center.latitude  =  position.coords.latitude;
+		    	$scope.map.center.longitude =  position.coords.longitude;
+		    	console.log("geolocation"+JSON.stringify(position.coords));
             });
         }, function(error) {
             $scope.$apply(function() {
                 $scope.error = error;
+                 console.log("geolocation error: "+error);
             });
         }, {});  
+
+ 	$scope.markers = [{
+		id: 1,
+		coords:{
+		    latitude: 9.855756503226328,
+		    longitude: -83.91060333698988
+		},
+	    options:{
+	    	draggable: true	    	
+	    },
+	    content: "Nuevo Apartamento",
+	    events:{
+	    	dragend: function(marker,event,args){
+						console.log("onMarkerMoved "+JSON.stringify(marker.getPosition()));
+						$scope.markers[0].coords.latitude = marker.getPosition().lat();
+						$scope.markers[0].coords.longitude = marker.getPosition().lng();
+			}
+	    }
+	}];
 
 	$scope.getPhoto = function(index){	
 		camera.getPicture(function(image) {
@@ -78,8 +100,10 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 			});
 	}
     $scope.crearAparta = function(){
-      console.debug($scope.item);
-      $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
+      $scope.item.ubicacion_latitud  = $scope.markers[0].coords.latitude;
+      $scope.item.ubicacion_longitud = $scope.markers[0].coords.longitude;
+      console.debug(JSON.stringify($scope.item));
+        $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
 		headers:{ 'Accept':'*/*'},
 		data: $scope.item }).
 		success(function(data, status, headers, config) {
