@@ -14,7 +14,7 @@
 	</div>
         <!-- item -->
             <div class="col-xs-12 col-md-6 apartas-item" ng-repeat="item in results | searchFor:searchString" >
-                <div class="media" ng-click="selectItem(item.id);toggle('rightSidebar');">
+                <div class="media" ng-click="selectItem(item);toggle('rightSidebar');">
                     <div class="col-xs-3 col-lg-2">
                     	<img class="img-list-apartas"  src="http://graph.facebook.com/{{item.oauth_id}}/picture" />
                     </div>
@@ -33,7 +33,7 @@
     </div>
 
 	<div content-for="sidebar-right">
-		<div profile user="item.interesados"></div>	
+		<div profile user="currentItem"></div>	
 	</div>
 
  </div>

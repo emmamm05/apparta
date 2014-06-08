@@ -27,7 +27,8 @@
                             <li style="list-style: none">|</li>
                             <li><i class="icon-location"></i>{{item.cercania_tec}}Km</li>
                         </ul>
-			<div imginteresados interesados="item.interesados" max="3"></div>
+			<div phone dial="callHome(currentUser)"></div>
+			<div imginteresados interesados="item.interesados" max="3" dial="selectUser(currentUser)"></div>
 			<h3 class="text-right admin-button" >
 				<a href="#overlay-delete" toggle="on" ><i class="icon-delete"></i></a>
 			</h3>
@@ -75,11 +76,15 @@
 
     <div bs-panel class="form-actions">
       <div content-for="navbarAction">
-        <a class="btn btn-primary" href="#/buscar-apartamento">
+         <a class="btn btn-primary" href="#/buscar-apartamento">
           Agregar
         </a>
       </div>
     </div>
+
+	<div content-for="sidebar-right">
+		<div profile user="currentUser"></div>	
+	</div>
 
  </div>
 </div>

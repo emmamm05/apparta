@@ -316,12 +316,10 @@ app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams',
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
 	$scope.interesadosMax  = 3;
-	interesadosMas = $scope.results-$scope.interesadosMax;
-	if(interesadosMas>0){
-		$scope.interesadosMas = "+"+interesadosMas;
-	} else{
-		$scope.interesadosMas = "";
-	}
+	$scope.selectUser = function (currentUser) {
+		$scope.currentUser = currentUser;
+		$scope.toggle('rightSidebar');
+	};
   }]);
 
 

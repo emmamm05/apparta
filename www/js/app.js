@@ -100,13 +100,12 @@ app.directive('fundooRating', function () {
   });
 
 
-
 app.directive('imginteresados', function () {
     return {
       restrict: 'A',
       template: '<ul class="interesados">' +
                   '<li ng-repeat="interesado in interesados | limitTo:max">' +
-                    '<img  src="http://graph.facebook.com/{{interesado.oauth_id}}/picture" />' +
+                    '<img ng-click="dial({currentUser:interesado});" src="http://graph.facebook.com/{{interesado.oauth_id}}/picture" />' +
                   '</li>' +
                   '<li><span class="label label-success">{{interesadosMas}}</span></li>' +
                 '</ul>',
@@ -114,14 +113,18 @@ app.directive('imginteresados', function () {
         max: '=',
         interesados: '=',
         interesadosMas: '&',
+        dial: "&"
       },
       link: function(scope, elem, attrs) {
-		scope.interesadosMas = scope.interesados.length-scope.max;
-		if(scope.interesadosMas>0){
-			scope.interesadosMas = "+"+scope.interesadosMas;
-		} else{
-			scope.interesadosMas = "";
-		}
+        scope.toggle = function(interesado) {
+	  scope.callBackMethod({currentUser:interesado});
+        };
+	scope.interesadosMas = scope.interesados.length-scope.max;
+	if(scope.interesadosMas>0){
+		scope.interesadosMas = "+"+scope.interesadosMas;
+	} else{
+		scope.interesadosMas = "";
+	}
       }
     }
   });

@@ -29,14 +29,8 @@ app.controller('BuscarUsuarioCtrl', ['$scope', '$routeParams',
 	  ];
 
 	$scope.currentItem = $scope.results[0];
-	$scope.selectItem = function(id){
-		for(var i=0; i<$scope.results.length; i++){
-			if($scope.results[i].id == id){
-				$scope.currentItem = $scope.results[i];
-				break;
-			}
-		}
-		
+	$scope.selectItem = function(user){
+		$scope.currentItem = user;	
 	};
 	$scope.clearSearch = function(){
 		$scope.searchString = "";		
