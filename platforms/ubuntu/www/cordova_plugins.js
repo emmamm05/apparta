@@ -62,6 +62,13 @@ module.exports = [
         "clobbers": [
             "navigator.geolocation"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -69,7 +76,8 @@ module.exports.metadata =
 {
     "org.apache.cordova.device-motion": "0.2.7",
     "org.apache.cordova.device-orientation": "0.3.6",
-    "org.apache.cordova.geolocation": "0.3.7"
+    "org.apache.cordova.geolocation": "0.3.7",
+    "org.apache.cordova.inappbrowser": "0.4.0"
 }
 // BOTTOM OF METADATA
 });

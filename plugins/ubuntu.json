@@ -30,6 +30,9 @@
         },
         "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "cr.tec.moviles"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "cr.tec.moviles"
         }
     },
     "dependent_plugins": {}

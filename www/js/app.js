@@ -41,10 +41,6 @@ app.config(['$routeProvider',
         templateUrl: 'partials/buscar-usuario.html',
         controller: 'BuscarUsuarioCtrl'
       }).
-      when('/ver-usuario/:id', {
-        templateUrl: 'partials/ver-usuario.html',
-        controller: 'VerAUsuarioCtrl'
-      }).
       when('/home', {
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
@@ -292,6 +288,11 @@ app.filter('searchFor', function(){
 		return result;
 	};
 });
+
+// permite conectarse con sms y tel
+app.config(['$compileProvider', function($compileProvider) {
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|sms):/);
+}]);
 
 
 window.onload = function() { 

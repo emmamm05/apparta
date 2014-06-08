@@ -22,6 +22,7 @@
 #include "plugins/org.apache.cordova.device-motion/accelerometer.h"
 #include "plugins/org.apache.cordova.device-orientation/compass.h"
 #include "plugins/org.apache.cordova.geolocation/geolocation.h"
+#include "plugins/org.apache.cordova.inappbrowser/inappbrowser.h"
 INSERT_HEADER_HERE
 
 #define INIT_PLUGIN(class) \
@@ -32,7 +33,7 @@ extern "C" {
 Q_DECL_EXPORT QList<QSharedPointer<CPlugin>> cordovaGetPluginInstances(Cordova *cordova) {
     QList<QSharedPointer<CPlugin>> res;
 
-    INIT_PLUGIN(DeviceMotion);INIT_PLUGIN(DeviceOrientation);INIT_PLUGIN(Geolocation);INSERT_PLUGIN_HERE
+    INIT_PLUGIN(DeviceMotion);INIT_PLUGIN(DeviceOrientation);INIT_PLUGIN(Geolocation);INIT_PLUGIN(Inappbrowser);INSERT_PLUGIN_HERE
 
     return res;
 }

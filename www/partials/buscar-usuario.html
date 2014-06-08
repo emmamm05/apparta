@@ -9,17 +9,18 @@
 		<div class="input-group">
 		  <span class="input-group-addon"><i class="icon-search"></i></span>
 		  <input type="text" class="form-control" ng-model="searchString" placeholder="Buscar...">
+		  <span class="input-group-addon" ng-click="clearSearch();"><i class="icon-remove"></i></span>
 		</div>
 	</div>
         <!-- item -->
-            <div class="col-xs-12 col-md-6 apartas-item" ng-repeat="item in results | searchFor:searchString">
-                <div class="media">
-                    <div class="col-xs-2 col-lg-2"><a href="#/ver-usuario/{{item.id}}">
-                    	<img class="img-list-apartas"  src="http://graph.facebook.com/{{item.oauth_id}}/picture" /></a>
+            <div class="col-xs-12 col-md-6 apartas-item" ng-repeat="item in results | searchFor:searchString" >
+                <div class="media" ng-click="selectItem(item.id);toggle('rightSidebar');">
+                    <div class="col-xs-3 col-lg-2">
+                    	<img class="img-list-apartas"  src="http://graph.facebook.com/{{item.oauth_id}}/picture" />
                     </div>
-                    <div class="media-body col-xs-10 col-lg-10">
+                    <div class="media-body col-xs-9 col-lg-10">
                         <h4 class="media-heading">
-                        	<a href="#/ver-usuario/{{item.id}} target="_parent">{{item.nombre+" "+item.apellido}}</a> 
+                        	<p>{{item.nombre+" "+item.apellido}}</p> 
                         </h4>
                         <div class="list-inline">alguna descripcion </div>
                     </div>
@@ -30,6 +31,30 @@
       <div content-for="navbarAction">
       </div>
     </div>
+
+	<div content-for="sidebar-right">
+		<div class="col-xs-12 profile">
+			<img 	src="http://graph.facebook.com/{{currentItem.oauth_id}}/picture" 
+				class="img-circle center-block img-responsive col-xs-6 col-sm-4 col-md-6 ">
+			</img>		
+			<h2 class="text-center">{{currentItem.nombre+" "+currentItem.apellido}}</h2>
+			<div class="row">
+				<div class="col-xs-10 col-xs-offset-1">
+					<div ng-click="openSocialProfile(currentItem.oauth_id, currentItem.oauth_proveedor);" class="btn btn-block btn-social btn-facebook">
+						<i class="icon-facebook"></i> Ver perfil
+					</div>
+					<a class="btn btn-block btn-social btn-phone" ng-href='tel:{{currentItem.telefono}}' >
+						<i class="icon-phone" ></i> Llamar
+					</a>
+					<a class="btn btn-block btn-social btn-info" ng-href='sms:{{currentItem.telefono}}?body=Hola, vi su anuncio en Apparta y me interesa obtener más información del aparmentamento.'>
+						<i class="icon-mail"></i> Mensaje de texto
+					</a>
+				</div>
+			</div>
+		</div>
+
+		
+	</div>
 
  </div>
 </div>

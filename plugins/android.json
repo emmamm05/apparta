@@ -31,6 +31,10 @@
                         {
                             "xml": "<feature name=\"Compass\"><param name=\"android-package\" value=\"org.apache.cordova.deviceorientation.CompassListener\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -89,6 +93,9 @@
         },
         "org.apache.cordova.media-capture": {
             "PACKAGE_NAME": "cr.tec.moviles"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "cr.tec.apparta"
         }
     },
     "dependent_plugins": {
