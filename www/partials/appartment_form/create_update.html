@@ -1,181 +1,215 @@
-   
+      <div class="tab-content">
 
-   <form>
+        <div class="tab-pane" 
+            toggleable 
+            active-class="active" 
+            default="active" 
+            id="Tab2"
+            exclusion-group="myTabs">
 
-	<!-- photo -->
-	<div bs-panel title="Fotograf&iacute;as" class="form-panel">
-		<div ng-repeat="foto in item.fotos" class="col-xs-3">
-                	<img src="{{foto.src}}" ng-click="getPhoto($index);" class="img-responsive " />
-		</div>
-	</div>
+		<div class="form-panel panel" >
+		    <div class="panel-heading">
+			<h2 class="panel-title">Desplace el puntero la ubicaci&oacute;n del apartamento</h2>
+		    </div>
+		    <div class="panel-body">
+			    <div ng-if="isShow">
+				<google-map center="map.center" zoom="map.zoom" draggable='true' refresh='true'>
+			 		<marker ng-repeat="marker in markers" coords="marker.coords" options="marker.options" events="marker.events">
+					</marker>
+				</google-map>
+			    </div>
 
-	<!-- general -->
-	<div bs-panel title="Información general" class="form-panel">
-
-		<div class="form-group row">
-
-		    <label class="control-label col-xs-3 col-sm-2 col-lg-1" for="item_titulo_input">T&iacute;tulo</label>
-		    <div class="form-control-wrapper col-xs-9 col-sm-10 col-lg-11">
-				<div class="input-group">
-				       <input
-						type="text" 
-						ng-model="item.titulo"
-						class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-						id="item_titulo_input" 
-						placeholder="Elija un t&iacute;tulo creativo"    
-						ng-model="item.titulo"  
-						ng-minlength="1" 
-						maxlength="15"
-				       />
-				  	<span class="input-group-addon" ng-class="{warning: item.titulo.length>=10}">{{15-item.titulo.length}}</span>
-				</div>
 		    </div>
 		</div>
 
-		<label class="col-xs-3 col-sm-2 col-lg-1" ></label>
-
-	       <input
-			bs-form-control
-			type="number" 
-			ng-model="item.mensualidad"
-			label="Mensualidad" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
-			placeholder="Precio de la mensualidad en colones"
-	       />
-
-		<textarea
-			bs-form-control
-			type="text" 
-			ng-model="item.direccion_fisica"
-			label="Direcci&oacute;n" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-			placeholder="Sea especifico"
-	       ></textarea>
-
-		<div 	ng-click="toggle('rightSidebar')"  
-			class="	btn btn-gray 
-				col-xs-offset-3 col-sm-offset-2 col-lg-offset-1 
-				col-xs-9 col-sm-10 col-lg-11 ">Agregar mapa</div>
-
-	</div>
-
-	<!-- services -->
-	<div bs-panel title="Servicios incluidos" class="form-panel">
-		<div ng-include="'partials/appartment_form/services.html'"></div>    
-	</div>
-
-	<!-- gender -->
-	<div bs-panel title="Disponible para" class="form-panel">
-		<div ng-include="'partials/appartment_form/gender.html'"></div>   
-	</div>
-
-	<!-- others -->
-	<div bs-panel title="Información complementaria" class="form-panel">
-		<input
-			bs-form-control
-			type="number" 
-			ng-model="item.habitaciones"
-			label="Habitaciones" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
-			placeholder="Solo las habitaciones disponibles"
-	       />
-
-		<input
-			bs-form-control
-			type="number" 
-			ng-model="item.area"
-			label="Área" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
-			placeholder="Tamaño del apartamento en metros cuadrados"
-	       />
-
-		<textarea
-			bs-form-control
-			type="text" 
-			ng-model="item.descripcion"
-			label="Descripción" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-			placeholder="Cuente a sus posibles clientes otras características del apartamento"
-	       ></textarea>
-	</div>
-
-	<!-- temp -->
-	<div bs-panel title="Campos temporales" class="form-panel">
-		<input
-			bs-form-control
-			type="number" 
-			ng-model="map.center.latitude"
-			label="ubicacion_latitud" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
-	       />
-		<input
-			bs-form-control
-			type="number" 
-			ng-model="map.center.longitude"
-			label="ubicacion_longitud" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
-	       />
-		<input
-			bs-form-control
-			type="number" 
-			ng-model="item.cercania_tec"
-			label="cercania_tec" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
-	       />
-
-	       <input
-			bs-form-control
-			type="text" 
-			ng-model="item.fotos[0].src"
-			label="fotos[0]" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-	       />
-
-	       <input
-			bs-form-control
-			type="text" 
-			ng-model="item.fotos[1].src"
-			label="fotos[1]" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-	       />
-
-	       <input
-			bs-form-control
-			type="text" 
-			ng-model="item.fotos[2].src"
-			label="fotos[2]" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-	       />
-
-	       <input
-			bs-form-control
-			type="text" 
-			ng-model="item.fotos[3].src"
-			label="fotos[3]" 
-			label-class="col-xs-3 col-sm-2 col-lg-1" 
-			class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
-	       />
-
-	</div>
-   </form>
-
-   	<google-map center="map.center" zoom="map.zoom" draggable='true'>
- 		<marker ng-repeat="marker in markers" coords="marker.coords" options="marker.options" events="marker.events">
-        </marker>
-	</google-map>
-
-	<div content-for="sidebar-right">
+		<div class="navbar navbar-app navbar-absolute-bottom">
+			<div class="btn-group justified">
+				<a 	href="#Tab1"
+					toggle="on"
+					class="btn btn-navbar">Siguiente &#187;
+				</a>
+			</div>
+		</div>
 
 
-	</div>
+        </div>
+
+        <div class="tab-pane" 
+            toggleable 
+            active-class="active" 
+            id="Tab1" 
+            exclusion-group="myTabs">
+
+
+		<!-- photo -->
+		<div bs-panel title="Fotograf&iacute;as" class="form-panel">
+			<div ng-repeat="foto in item.fotos" class="col-xs-3">
+		        	<img src="{{foto.src}}" ng-click="getPhoto($index);" class="img-responsive " />
+			</div>
+		</div>
+
+		<!-- general -->
+		<div bs-panel title="Información general" class="form-panel">
+
+			<div class="form-group row">
+
+			    <label class="control-label col-xs-3 col-sm-2 col-lg-1" for="item_titulo_input">T&iacute;tulo</label>
+			    <div class="form-control-wrapper col-xs-9 col-sm-10 col-lg-11">
+					<div class="input-group">
+					       <input
+							type="text" 
+							ng-model="item.titulo"
+							class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+							id="item_titulo_input" 
+							placeholder="Elija un t&iacute;tulo creativo"    
+							ng-model="item.titulo"  
+							ng-minlength="1" 
+							maxlength="15"
+					       />
+					  	<span class="input-group-addon" ng-class="{warning: item.titulo.length>=10}">{{15-item.titulo.length}}</span>
+					</div>
+			    </div>
+			</div>
+
+			<label class="col-xs-3 col-sm-2 col-lg-1" ></label>
+
+		       <input
+				bs-form-control
+				type="number" 
+				ng-model="item.mensualidad"
+				label="Mensualidad" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+				placeholder="Precio de la mensualidad en colones"
+		       />
+
+			<textarea
+				bs-form-control
+				type="text" 
+				ng-model="item.direccion_fisica"
+				label="Direcci&oacute;n" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+				placeholder="Sea especifico"
+		       ></textarea>
+			<!--	
+			<a 	class="	btn btn-gray 
+					col-xs-offset-3 col-sm-offset-2 col-lg-offset-1 
+					col-xs-9 col-sm-10 col-lg-11 "
+				href="#Tab2"
+				toggle="on">Volver a ubicar en el mapa
+			</a>
+			--->
+		</div>
+
+		<!-- services -->
+		<div bs-panel title="Servicios incluidos" class="form-panel">
+			<div ng-include="'partials/appartment_form/services.html'"></div>    
+		</div>
+
+		<!-- gender -->
+		<div bs-panel title="Disponible para" class="form-panel">
+			<div ng-include="'partials/appartment_form/gender.html'"></div>   
+		</div>
+
+		<!-- others -->
+		<div bs-panel title="Información complementaria" class="form-panel">
+			<input
+				bs-form-control
+				type="number" 
+				ng-model="item.habitaciones"
+				label="Habitaciones" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+				placeholder="Solo las habitaciones disponibles"
+		       />
+
+			<input
+				bs-form-control
+				type="number" 
+				ng-model="item.area"
+				label="Área" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+				placeholder="Tamaño del apartamento en metros cuadrados"
+		       />
+
+			<textarea
+				bs-form-control
+				type="text" 
+				ng-model="item.descripcion"
+				label="Descripción" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+				placeholder="Cuente a sus posibles clientes otras características del apartamento"
+		       ></textarea>
+		</div>
+
+		<!-- temp -->
+		<div bs-panel title="Campos temporales" class="form-panel">
+			<input
+				bs-form-control
+				type="number" 
+				ng-model="map.center.latitude"
+				label="ubicacion_latitud" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+		       />
+			<input
+				bs-form-control
+				type="number" 
+				ng-model="map.center.longitude"
+				label="ubicacion_longitud" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+		       />
+			<input
+				bs-form-control
+				type="number" 
+				ng-model="item.cercania_tec"
+				label="cercania_tec" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control ng-valid-number"
+		       />
+
+		       <input
+				bs-form-control
+				type="text" 
+				ng-model="item.fotos[0].src"
+				label="fotos[0]" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+		       />
+
+		       <input
+				bs-form-control
+				type="text" 
+				ng-model="item.fotos[1].src"
+				label="fotos[1]" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+		       />
+
+		       <input
+				bs-form-control
+				type="text" 
+				ng-model="item.fotos[2].src"
+				label="fotos[2]" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+		       />
+
+		       <input
+				bs-form-control
+				type="text" 
+				ng-model="item.fotos[3].src"
+				label="fotos[3]" 
+				label-class="col-xs-3 col-sm-2 col-lg-1" 
+				class="col-xs-9 col-sm-10 col-lg-11 ng-scope ng-pristine ng-valid needsclick form-control"
+		       />
+
+		</div>
+
+        </div>
+
+</div>

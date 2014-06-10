@@ -47,8 +47,11 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 	        latitude: 9.855756503226328,
 	        longitude: -83.91060333698988
 	    },
-	    zoom: 17
+	    zoom: 15
 	};
+
+	$scope.isShow = true;
+	google.maps.event.trigger($scope.map,'resize');
 
  	geolocation.getCurrentPosition(function(position) {
             $scope.$apply(function() {
@@ -79,6 +82,8 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 			}
 	    }
 	}];
+
+	google.maps.event.trigger($scope.map, 'resize');
 
 	$scope.getPhoto = function(index){	
 		camera.getPicture(function(image) {
@@ -113,6 +118,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 			  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
 		});
 	    };
+
   }]);
 
 app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http','ApartamentosService',
