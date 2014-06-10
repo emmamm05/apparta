@@ -55,8 +55,8 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 
  	geolocation.getCurrentPosition(function(position) {
             $scope.$apply(function() {
-		$scope.map.center.latitude 	=  position.coords.latitude;
-	    	$scope.map.center.longitude 	=  position.coords.longitude;
+		$scope.markers[0].coords.latitude 	=  position.coords.latitude;
+	    	$scope.markers[0].coords.longitude 	=  position.coords.longitude;
             });
         }, function(error) {
             $scope.$apply(function() {
@@ -71,14 +71,15 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 		    longitude: -83.91060333698988
 		},
 	    options:{
+		icon:"img/marker.png",
 	    	draggable: true	    	
 	    },
 	    content: "Nuevo Apartamento",
 	    events:{
 	    	dragend: function(marker,event,args){
 						console.log("onMarkerMoved "+JSON.stringify(marker.getPosition()));
-						$scope.markers[0].coords.latitude = marker.getPosition().lat();
-						$scope.markers[0].coords.longitude = marker.getPosition().lng();
+						$scope.markers[0].coords.latitude = marker.getPosition().k;
+						$scope.markers[0].coords.longitude = marker.getPosition().A	;
 			}
 	    }
 	}];
