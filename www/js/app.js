@@ -7,7 +7,8 @@ var app = angular.module('Apparta', [
   "gd.ui.jsonexplorer",
   "toaster",
   "google-maps",
-  "uiSlider"
+  "uiSlider",
+  "ngStorage"
 ]);
 
 app.config(['$routeProvider',
@@ -16,6 +17,10 @@ app.config(['$routeProvider',
       when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl'
+      }).
+      when('/logout', {
+        templateUrl: 'partials/logout.html',
+        controller: 'LogoutCtrl'
       }).
       when('/resultados-apartamentos', {
         templateUrl: 'partials/resultados-apartamentos.html',

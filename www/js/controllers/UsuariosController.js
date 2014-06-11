@@ -4,14 +4,30 @@ app.controller('UsuariosCtrl', ['$scope', '$routeParams',
       
   }]);
 
-app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location',
-  function($rootScope, $scope, $routeParams, $location) {
+app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage',
+  function($rootScope, $scope, $routeParams, $location, $localStorage) {
+	$rootScope.isLogged = $localStorage.isLogged || false;
 	if($rootScope.isLogged){
 		$location.path('/home');
 	}
       	$scope.login = function () {
-		$rootScope.isLogged = true;
+		$rootScope.isLogged 	= true;
+		$localStorage.isLogged 	= true;
+		console.log("LogIn");
 		$location.path('/home');
+	};
+  }]);
+
+app.controller('LogoutCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage',
+  function($rootScope, $scope, $routeParams, $location, $localStorage) {
+      	$scope.logout = function () {
+		$rootScope.isLogged = false;
+		$localStorage.isLogged = false;
+		delete $localStorage.$reset();
+		console.log($localStorage.isLogged);
+		console.log($rootScope.isLogged);
+		console.log("LogOut");
+		$location.path('/login');
 	};
   }]);
  
