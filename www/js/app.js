@@ -8,7 +8,8 @@ var app = angular.module('Apparta', [
   "toaster",
   "google-maps",
   "uiSlider",
-  "ngStorage"
+  "ngStorage",
+  "openfb"
 ]);
 
 app.config(['$routeProvider',
@@ -249,10 +250,10 @@ app.directive( "carouselExampleItem", function($rootScope, $swipe){
     }
 });
 
-app.run(function(amMoment) {
-    amMoment.changeLanguage('es');
+app.run(function(amMoment, OpenFB) {
+	amMoment.changeLanguage('es');
+	OpenFB.init('1524504121110873');
 });
-
 
 /*************************************************************************************/
 /********************************       cordova      *********************************/
@@ -369,7 +370,6 @@ app.filter('searchFor', function(){
 app.config(['$compileProvider', function($compileProvider) {
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|sms):/);
 }]);
-
 
 window.onload = function() { 
   var txts = document.getElementsByTagName('textarea') 

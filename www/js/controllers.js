@@ -6,8 +6,8 @@ app.controller('Apartamentos',['$scope','$routeParams',
   }]);
 
 
-app.controller('HomeCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
+app.controller('HomeCtrl', ['$scope', '$routeParams', '$localStorage',
+  function($scope, $routeParams, $localStorage) {
       $scope.popular_apartments = [
 	    {'id': '1',
 	     'title': 'Titulo d aparta',

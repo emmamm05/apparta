@@ -3,19 +3,47 @@ app.controller('UsuariosCtrl', ['$scope', '$routeParams',
       //Falta hay q hacer lo de facebook 
       
   }]);
+ 
 
-app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage',
-  function($rootScope, $scope, $routeParams, $location, $localStorage) {
+app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage', '$timeout', 'OpenFB','toaster',
+  function($rootScope, $scope, $routeParams, $location, $localStorage, $timeout, OpenFB, toaster) {
 	$rootScope.isLogged = $localStorage.isLogged || false;
+	$scope.location = $location;
 	if($rootScope.isLogged){
 		$location.path('/home');
 	}
+	
+        $scope.facebookLogin = function () {
+            OpenFB.login('email,user_friends,user_birthday').then(
+                function () {
+			$scope.user = {};
+			OpenFB.get('/me').success(function (user) {
+				$scope.user.oauth_proveedor	= "facebook";
+				$scope.user.nombre		= user.first_name;
+				$scope.user.apellido		= user.last_name;
+				$scope.user.email		= user.email;
+				$scope.user.genero		= user.gender;
+				$scope.user.oauth_id		= user.id;
+				$scope.user.cumpleanos		= user.birthday;
+				//TODO: llamar al backend para solicitar id
+				$localStorage.user = $scope.user;
+				$scope.login();
+			});
+                },
+                function () {
+                    toaster.pop('error', "Error", 'No se pudo iniciar sesi&oacute;n', null, 'trustedHtml');
+                });
+        };
+
       	$scope.login = function () {
 		$rootScope.isLogged 	= true;
 		$localStorage.isLogged 	= true;
-		console.log("LogIn");
+		toaster.pop('success', 'Hola '+$scope.user.nombre+',', 'Bienvenido a Apparta!', 10000, 'trustedHtml');
 		$location.path('/home');
 	};
+      
+
+
   }]);
 
 app.controller('LogoutCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage',
