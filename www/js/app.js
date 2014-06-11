@@ -13,6 +13,10 @@ var app = angular.module('Apparta', [
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
+      when('/login', {
+        templateUrl: 'partials/login.html',
+        controller: 'LoginCtrl'
+      }).
       when('/resultados-apartamentos', {
         templateUrl: 'partials/resultados-apartamentos.html',
         controller: 'ResultadosCtrl'
@@ -51,7 +55,7 @@ app.config(['$routeProvider',
       }).
 	when('/carousel',  {templateUrl: "partials/carousel.html"}).
       otherwise({
-        redirectTo: '/home'
+        redirectTo: '/login'
       });
   }]);
 

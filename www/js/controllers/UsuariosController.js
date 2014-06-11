@@ -3,6 +3,17 @@ app.controller('UsuariosCtrl', ['$scope', '$routeParams',
       //Falta hay q hacer lo de facebook 
       
   }]);
+
+app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location',
+  function($rootScope, $scope, $routeParams, $location) {
+	if($rootScope.isLogged){
+		$location.path('/home');
+	}
+      	$scope.login = function () {
+		$rootScope.isLogged = true;
+		$location.path('/home');
+	};
+  }]);
  
 
 app.controller('BuscarUsuarioCtrl', ['$scope', '$routeParams',

@@ -18,18 +18,19 @@
   <link rel="stylesheet" href="css/fontello.css" />
   <link rel="stylesheet" href="css/apparta.css" />
   <link rel="stylesheet" href="css/gallery.css" />
+  <link rel="stylesheet" href="css/login.css" />
 
 </head>
 
 <body ng-app="Apparta">
 
-  <div ng-include="'partials/sidebar.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar"></div>
+  <div ng-if="$root.isLogged" ng-include="'partials/sidebar.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar"></div>
 
   <div yield-to="sidebar-right" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebar"></div>
 
   <div class="app">
     <!-- Navbar -->
-    <div class="navbar navbar-app navbar-absolute-top">
+    <div  ng-if="$root.isLogged" class="navbar navbar-app navbar-absolute-top">
 
         <div class="navbar-brand navbar-brand-center" yield-to="title">
           <span>Inicio</span>
