@@ -42,6 +42,19 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location'
                 });
         };
 
+
+        $scope.defaultLogin = function () {
+		$scope.user = {};
+		$scope.user.oauth_proveedor	= "facebook";
+		$scope.user.nombre		= "Bairon";
+		$scope.user.apellido		= "Perez";
+		$scope.user.email		= "baiper06@gmail.com";
+		$scope.user.genero		= "male";
+		$scope.user.oauth_id		= "1234";
+		$scope.user.cumpleanos		= "01/01/1900";
+		$scope.login();
+        };
+
 	$scope.googleLogin = function () {
 		//Show the consent page
 		$scope.googleapi.authorize({
