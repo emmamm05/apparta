@@ -1,4 +1,4 @@
-var root = "http://localhost:8080/api";
+var root = "http://apparta.herokuapp.com/api";
 
 app.service('ApartamentosService',['$http','$location',function($http,$location){
 	var mResults = [];
@@ -124,7 +124,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$location', 'geolocation', 
 		  $location.path('/mis-apartamentos');
 		}).
 		error(function(data, status, headers, config) {
-		  console.log("POST error");
+		  console.log("POST error "+data+headers+config);
 		  console.log('$scope.crearAparta: status:'+status);
 		  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
 		});
