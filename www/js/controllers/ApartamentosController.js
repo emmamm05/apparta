@@ -1,40 +1,47 @@
 var root = "http://localhost:8080/api";
 
-app.service('ApartamentosService',['$http',function($http){
-	var results = [];
-	var item;
-	this.buscarAparta = function(){
-	console.log("buscando... "+this.item);
-	$http({method: 'GET', url: root + "/apartamentos/search",
-	  headers:{ 'Accept':'*/*'},
-	  data: item }).
-	  success(function(data, status, headers, config) {
-	    console.log("POST Sucess");
-	    console.log();
-	  }).
-	  error(function(data, status, headers, config) {
-	    console.log("POST error");
-	    console.log(status);
-	    console.log(data);
-	  });
-    };
+app.service('ApartamentosService',['$http','$location',function($http,$location){
+	var mResults = [];
+	var mItem;
+	this.buscarAparta = function(item){
+		console.log( "buscando... " + mItem + item);
+		mItem = item;
+		$http({method: 'GET', url: root + "/apartamentos/search",
+			headers:{ 'Accept':'*/*'},
+			params: mItem }).
+				success(function(data, status, headers, config) {
+					console.log("POST Sucess "+data);
+					mResults = data;
+					$location.path("/resultados-apartamentos");
+				}).
+				error(function(data, status, headers, config) {
+					console.log("POST error");
+					console.log(status);
+					console.log(data);
+				});
+	};
+	this.getResults = function(){
+		return mResults;
+	};
 }]);
 
 app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-      //Falta hay q hacer lo de facebook 
-    
+    //Falta hay q hacer lo de facebook
+
   }]);
  
 
-app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$routeParams', '$http','toaster',
-  function($scope, geolocation, camera, $routeParams, $http, toaster) {
-    //$scope.item = ApartamentosAPIService.CREATE;
+app.controller('AgregarApartamentoCtrl', ['$scope', '$location', 'geolocation', 'camera', '$routeParams', '$http','toaster',
+  function( $scope, $location, geolocation, camera, $routeParams, $http, toaster ) {
+
     $scope.item = {	genero: 'unisex',
     				opcion_agua: false,
     				opcion_electricidad: false,
     				opcion_internet: false,
     				opcion_seguridad: false,
+    				ubicacion_latitud: 9.855756503226328,
+    				ubicacion_longitud: 83.91060333698988,
     				fotos:[
 						{src: 'img/add_img.png'},
 						{src: 'img/add_img.png'},
@@ -42,6 +49,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 						{src: 'img/add_img.png'}
 			    	]
     };
+
 	$scope.map = {
 	    center: {
 	        latitude: 9.855756503226328,
@@ -51,15 +59,16 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 	};
 
 	$scope.isShow = true;
+
 	google.maps.event.trigger($scope.map,'resize');
 
  	geolocation.getCurrentPosition(function(position) {
             $scope.$apply(function() {
-		$scope.markers[0].coords.latitude 	=  position.coords.latitude;
-	    	$scope.markers[0].coords.longitude 	=  position.coords.longitude;
+				$scope.item.ubicacion_latitud 	=  position.coords.latitude;
+		    	$scope.item.ubicacion_longitud  =  position.coords.longitude;
             });
         }, function(error) {
-            $scope.$apply(function() {
+            	$scope.$apply(function() {
                 $scope.error = error;
             });
         }, {});  
@@ -77,9 +86,11 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 	    content: "Nuevo Apartamento",
 	    events:{
 	    	dragend: function(marker,event,args){
-						console.log("onMarkerMoved "+JSON.stringify(marker.getPosition()));
-						$scope.markers[0].coords.latitude = marker.getPosition().k;
-						$scope.markers[0].coords.longitude = marker.getPosition().A	;
+				console.log("onMarkerMoved "+JSON.stringify(marker.getPosition()));
+				$scope.item.ubicacion_latitud = marker.getPosition().lat();
+				$scope.item.ubicacion_longitud = marker.getPosition().lng();	    	
+				toaster.pop('warning', "Geolocation", JSON.stringify($scope.map.center.latitude), null, 'trustedHtml');
+
 			}
 	    }
 	}];
@@ -103,93 +114,47 @@ app.controller('AgregarApartamentoCtrl', ['$scope', 'geolocation', 'camera','$ro
 			});
 	}
     $scope.crearAparta = function(){
-      $scope.item.ubicacion_latitud  = $scope.markers[0].coords.latitude;
-      $scope.item.ubicacion_longitud = $scope.markers[0].coords.longitude;
-      console.debug(JSON.stringify($scope.item));
+      	console.debug(JSON.stringify($scope.item));
         $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
 		headers:{ 'Accept':'*/*'},
 		data: $scope.item }).
 		success(function(data, status, headers, config) {
 		  console.log("POST Sucess");
 		  toaster.pop('success', "Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
+		  $location.path('/mis-apartamentos');
 		}).
 		error(function(data, status, headers, config) {
 		  console.log("POST error");
-			  console.log('$scope.crearAparta: status:'+status);
-			  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
+		  console.log('$scope.crearAparta: status:'+status);
+		  toaster.pop('error', "Error", 'No se pudo crear el apartamento', null, 'trustedHtml');
 		});
-	    };
-
+	};
   }]);
 
-app.controller('BuscarApartamentoCtrl', ['$scope', '$routeParams','$http','ApartamentosService',
-  function($scope, $routeParams,$http, ApartamentosService) {
-     $scope.item = {	genero: 	'unisex',  	
-			calificacion: 	3, 
-			cercania_tec: 	5,
-			min_mensualidad:50000,
-			max_mensualidad:300000,
-			habitaciones:	2
-		};
-
-	ApartamentosService.item = $scope.item;
-	$scope.buscarAparta = ApartamentosService.buscarAparta;
-	console.log("BuscarApartamentoCtrl/buscarAparta: ",ApartamentosService.item);
+app.controller('BuscarApartamentoCtrl', ['$scope', '$location','$routeParams','$http','ApartamentosService',
+  function($scope, $location, $routeParams,$http, ApartamentosService) {
+    $scope.item = {	
+    	genero: 'unisex',  	
+		calificacion: 	3, 
+		cercania_tec: 	5,
+		min_mensualidad:50000,
+		max_mensualidad:300000,
+		habitaciones:	2
+	};
+	$scope.buscarAparta = function(item){
+		ApartamentosService.mItem = $scope.item;
+		console.log("BuscarApartamentoCtrl/buscarAparta: " + ApartamentosService.mItem);
+		ApartamentosService.buscarAparta($scope.item);
+	}
 }]);
 
 
-app.controller('ResultadosCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
+app.controller('ResultadosCtrl', ['$scope', '$routeParams','ApartamentosService',
+  function($scope, $routeParams,ApartamentosService) {
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
-	//console.log('results: '+ApartamentosService.results);
-	$scope.results = [
-	    {'id': '1',
-	     'titulo': 'Barato y espacioso',
-	     'calificacion': '3',
-	     'area': '220',
-	     'habitaciones': '5',
-	     'sexo': 'male',
-	     'cercania_tec': '1.8', 
-	     'mensualidad': 150000, 
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/city/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	]},
-	    {'id': '2',
-	     'titulo': 'Oferta!!',
-	     'calificacion': '5',
-	     'area': '220',
-	     'habitaciones': '3',
-	     'sexo': 'unisex',
-	     'cercania_tec': '2.1',
-	     'mensualidad': 70000, 
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/technics/'},
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	]},
-	    {'id': '3',
-	     'titulo': 'Primeros ingresos',
-	     'calificacion': '1',
-	     'area': '320',
-	     'habitaciones': '4',
-	     'sexo': 'female',
-	     'cercania_tec': '7.2',
-	     'mensualidad': 320000, 
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	]},
-	  ];
+	console.log('results: '+JSON.stringify(ApartamentosService.getResults()));
+	$scope.results = ApartamentosService.getResults();
   }]);
 
 

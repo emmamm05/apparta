@@ -63,7 +63,7 @@ app.config(['$routeProvider',
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
       }).
-	when('/carousel',  {templateUrl: "partials/carousel.html"}).
+	    when('/carousel',  {templateUrl: "partials/carousel.html"}).
       otherwise({
         redirectTo: '/login'
       });
