@@ -9,6 +9,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location'
   function($rootScope, $scope, $routeParams, $location, $localStorage, $timeout, OpenFB, toaster) {
 	$rootScope.location = $location.path();
 	$rootScope.isLogged = $localStorage.isLogged || false;
+	$rootScope.es_anunciante = $localStorage.user.es_anunciante || false;
 	$scope.location = $location;
 	if($rootScope.isLogged){
 		$location.path('/home');
@@ -19,7 +20,8 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location'
 		$rootScope.isLogged 	= true;
 		$localStorage.isLogged 	= true;
 		$localStorage.user 	= $scope.user;
-		toaster.pop('success', 'Hola '+$scope.user.nombre+',', 'Bienvenido a Apparta!', 10000, 'trustedHtml');
+		$rootScope.es_anunciante = $scope.user.es_anunciante;
+		toaster.pop('success', 'Hola '+$localStorage.user.nombre+',', 'Bienvenido a Apparta!', 10000, 'trustedHtml');
 		$location.path('/home');
 	};
 	
@@ -51,7 +53,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location'
 		$scope.user.apellido		= "Perez";
 		$scope.user.email		= "baiper06@gmail.com";
 		$scope.user.genero		= "male";
-		$scope.user.oauth_id		= "1234";
+		$scope.user.oauth_id		= "1763484990";
 		$scope.user.cumpleanos		= "01/01/1900";
 		$scope.login();
         };
@@ -190,6 +192,17 @@ app.controller('LogoutCtrl', ['$rootScope', '$scope', '$routeParams', '$location
 		console.log($rootScope.isLogged);
 		console.log("LogOut");
 		$location.path('/login');
+	};
+  }]);
+
+
+app.controller('ConfiguracionCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage','toaster',
+  function($rootScope, $scope, $routeParams, $location, $localStorage, toaster) {
+	$scope.user = $localStorage.user;
+      	$scope.save = function () {
+		$scope.user = $localStorage.user;
+		$rootScope.es_anunciante = $scope.user.es_anunciante;
+		toaster.pop('success', 'Genial!', 'Su informaci&oacute;n ha sido actualizado correctamente.', null, 'trustedHtml');
 	};
   }]);
  

@@ -23,6 +23,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/logout.html',
         controller: 'LogoutCtrl'
       }).
+      when('/configuracion', {
+        templateUrl: 'partials/configuracion.html',
+        controller: 'ConfiguracionCtrl'
+      }).
       when('/resultados-apartamentos', {
         templateUrl: 'partials/resultados-apartamentos.html',
         controller: 'ResultadosCtrl'

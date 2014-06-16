@@ -1,0 +1,42 @@
+<div class="scrollable">  
+  <div class="scrollable-content">
+
+   <div class="col-xs-12 profile">
+		<img src="http://graph.facebook.com/{{user.oauth_id}}/picture"
+			class="img-circle center-block img-responsive col-xs-6 col-sm-3 col-md-2">
+		</img>
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3 my-profile">
+			<div class="col-xs-6">
+				<input type="text" class="form-control input-lg" placeholder="Nombre" ng-model="user.nombre">
+			</div>
+			<div class="col-xs-6">
+				<input type="text" class="form-control input-lg" placeholder="Apellidos" ng-model="user.apellido">
+			</div>
+			<div class="col-xs-12">
+				<input type="text" class="form-control input-lg" placeholder="Email" ng-model="user.email">
+			</div>
+			<div class="col-xs-12" ng-if="user.es_anunciante">
+				<input type="text" class="form-control input-lg" placeholder="Telefono" ng-model="user.telefono">
+			</div>
+			<div class="col-xs-12">
+			       <switch
+				bs-form-control
+				ng-change="switchChanged()"
+				ng-click="switchClicked()"
+				ng-model="user.es_anunciante"
+				label="Activar modo anunciante"
+				label-class="col-xs-6 col-sm-7"
+				class="col-xs-6 col-sm-5" 
+				></switch>
+			</div>
+		</div>
+	</div>
+
+	<div bs-panel class="form-actions">
+		<div content-for="navbarAction">
+			<button class="btn btn-primary" ng-click="save()">Guardar</button>
+		</div>
+	</div>
+
+  </div>
+</div>
