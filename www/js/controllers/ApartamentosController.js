@@ -196,30 +196,20 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams','ApartamentosService'
 
 
 
-app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
-	$scope.results = [];
+app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams', '$localStorage',
+  function($scope, $routeParams, $localStorage) {
 
-	$http({method: 'GET', url: root + "/interesados/"+ $localStorage.user._id,
-			headers:{ 'Accept':'*/*'}
-			}).
+     $http({method: 'GET', url: root + "/interesados/"+$localStorage.user._id,
+			headers:{ 'Accept':'*/*'}}).
 				success(function(data, status, headers, config) {
-					console.log("POST Sucess "+JSON.stringify(data));
+					console.log("POST Sucess "+data);
 					$scope.results = data;
-					for ( var i=0 ; i < $scope.results.length ; i++ ){
-						$scope.results[i].fotos = [];
-						$scope.results[i].fotos.push( {src:$scope.results[i].foto_uno} );
-						$scope.results[i].fotos.push( {src:$scope.results[i].foto_dos} );
-						$scope.results[i].fotos.push( {src:$scope.results[i].foto_tres} );
-						$scope.results[i].fotos.push( {src:$scope.results[i].foto_cuatro} );
-					};
 				}).
 				error(function(data, status, headers, config) {
 					console.log("POST error");
 					console.log(status);
 					console.log(data);
 				});
-
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
 	$scope.interesadosMax  = 3;
@@ -228,6 +218,7 @@ app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams',
 		$scope.toggle('rightSidebar');
 	};
   }]);
+
 
 
 app.controller('VerApartamentoCtrl', ['$scope', '$routeParams','$http','$localStorage','toaster',
