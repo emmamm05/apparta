@@ -14,7 +14,7 @@
             <div class="apartas-item col-sm-12" ng-repeat="item in results | orderBy:order:reverse">
                 <div class="media">
                     <div class="col-xs-4 col-lg-5"><a href="#/ver-apartamento/{{item._id}}">
-                    	<img class="img-list-apartas"  src="{{item.fotos[0].src}}" /></a>
+                    	<img class="img-list-apartas"  src="{{item.foto_uno}}" /></a>
                     </div>
                     <div class="media-body col-xs-8 col-lg-7">
                         <h4 class="media-heading">
@@ -83,7 +83,6 @@
     </div>
 
 	<div content-for="sidebar-right">
-		<div profile user="currentUser"></div>	
 	</div>
 
  </div>

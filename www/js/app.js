@@ -133,11 +133,15 @@ app.directive('imginteresados', function () {
         scope.toggle = function(interesado) {
 	  scope.callBackMethod({currentUser:interesado});
         };
-	scope.interesadosMas = scope.interesados.length-scope.max;
-	if(scope.interesadosMas>0){
-		scope.interesadosMas = "+"+scope.interesadosMas;
-	} else{
-		scope.interesadosMas = "";
+	if(scope.interesados){
+		scope.interesadosMas = scope.interesados.length-scope.max;
+		if(scope.interesadosMas>0){
+			scope.interesadosMas = "+"+scope.interesadosMas;
+		} else{
+			scope.interesadosMas = "";
+		}
+	}else{
+		scope.interesados = [];
 	}
       }
     }

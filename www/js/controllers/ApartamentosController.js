@@ -196,8 +196,8 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams','ApartamentosService'
 
 
 
-app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams', '$localStorage',
-  function($scope, $routeParams, $localStorage) {
+app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams', '$localStorage', '$http',
+  function($scope, $routeParams, $localStorage, $http) {
 
      $http({method: 'GET', url: root + "/interesados/"+$localStorage.user._id,
 			headers:{ 'Accept':'*/*'}}).
@@ -271,7 +271,7 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams','$http','$localSt
     };
 
     $scope.add_interes = function(){
-    	$http({method: 'PUT', url: root + "/apartamentos/"+$routeParams.id,
+    	$http({method: 'PUT', url: root + "/interesados/",
 			headers:{ 'Accept':'*/*'},
 			data: { usuario_id:$localStorage.user._id, aparta_id:$scope.item._id } }).
 				success(function(data, status, headers, config) {
