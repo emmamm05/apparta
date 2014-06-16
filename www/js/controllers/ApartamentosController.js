@@ -113,8 +113,6 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$localStorage','$location',
 				console.log("onMarkerMoved "+JSON.stringify(marker.getPosition()));
 				$scope.item.ubicacion_latitud = marker.getPosition().lat();
 				$scope.item.ubicacion_longitud = marker.getPosition().lng();	    	
-				toaster.pop('warning', "Geolocation", JSON.stringify($scope.map.center.latitude), null, 'trustedHtml');
-
 			}
 	    }
 	}];
