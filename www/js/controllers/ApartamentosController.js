@@ -329,61 +329,27 @@ app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams',
   }]);
 
 
-app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
+app.controller('VerApartamentoCtrl', ['$scope', '$routeParams','$http','$localStorage',
+  function($scope, $routeParams,$http,$localStorage) {
      console.log($routeParams.id);
-     $scope.item = {	id: '1',
-	     		descripcion: 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus dolor non fermentum imperdiet. Phasellus adipiscing tellus in nibh rhoncus, ac convallis erat ullamcorper. Nullam interdum mi et ultrices iaculis. Mauris placerat dolor massa, eget aliquet elit aliquet id.',  	
-			direccion_fisica: 	'direccion del aparta', 
-			area: 			230,  	
-			ubicacion_latitud: 	5.342, 
-			ubicacion_longitud: 	10.2323, 
-			cercania_tec: 		5, 
-			calificacion: 		4, 
-			mensualidad: 		70000, 
-			habitaciones: 		5, 
-			titulo: 		'Titulo del aparta', 
-			genero: 		'male', 
-			opcion_agua: 		true, 
-			opcion_electricidad: 	true, 
-			opcion_seguridad: 	true, 
-			opcion_internet: 	true,
-			fotos: 		[
-							{src: 'http://lorempixel.com/250/200/city/'},
-							{src: 'http://lorempixel.com/250/200/abstract/'},
-							{src: 'http://lorempixel.com/250/200/transport/'},
-							{src: 'http://lorempixel.com/250/200/technics/'}
-					],
-			comentarios: 	[
-						{
-							contenido: 'Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate',
-							fecha_publicacion: "2014-02-08 09:30",
-							autor: {
-								nombre: 	'Bairon',
-								apellido: 	'Perez',
-								oauth_id: 	'1763484990',
-								}
-						},
-						{
-							contenido: 'Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ',
-							fecha_publicacion: "2014-05-08 09:30",
-							autor: {
-								nombre: 	'Karla',
-								apellido: 	'Madrigal',
-								oauth_id: 	'100001429851672',
-								}
-						},
-						{
-							contenido: 'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ',
-							fecha_publicacion: "2013-02-08 09:30",
-							autor: {
-								nombre: 	'Emmanuel',
-								apellido: 	'Mora',
-								oauth_id: 	'1287630773',
-								}
-						}
-				    	]
-		};
+     $scope.item = "";
+     $http({method: 'GET', url: root + "/apartamentos/"+$routeParams.id,
+			headers:{ 'Accept':'*/*'}}).
+				success(function(data, status, headers, config) {
+					console.log("POST Sucess "+data);
+					$scope.item = data;
+					$scope.item.fotos = [
+							{src: $scope.item.foto_uno},
+							{src: $scope.item.foto_dos},
+							{src: $scope.item.foto_tres},
+							{src: $scope.item.foto_cuatro}
+					    	];
+				}).
+				error(function(data, status, headers, config) {
+					console.log("POST error");
+					console.log(status);
+					console.log(data);
+				});
 
     $scope.nueva_calificacion = 5;
     $scope.nuevo_comentario = "";
