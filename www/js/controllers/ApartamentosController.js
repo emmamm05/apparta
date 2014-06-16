@@ -378,6 +378,10 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams','$http','$localSt
         $scope._Index = index;
     };
 
+    $scope.add_interes = function(){
+
+    };
+
 
   }]);
 
