@@ -417,54 +417,30 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams',
 
 
 
-app.controller('MisApartamentosCtrl', ['$scope', '$routeParams',
-  function($scope, $routeParams) {
+app.controller('MisApartamentosCtrl', ['$scope', '$routeParams','$localStorage','$http',
+  function($scope, $routeParams, $localStorage,$http) {
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
-	$scope.results = [
-	    {'id': '1',
-	     'titulo': 'Barato y espacioso',
-	     'calificacion': '3',
-	     'area': '220',
-	     'habitaciones': '5',
-	     'sexo': 'male',
-	     'cercania_tec': '1.8',
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/city/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	]},
-	    {'id': '2',
-	     'titulo': 'Oferta!!',
-	     'calificacion': '5',
-	     'area': '220',
-	     'habitaciones': '3',
-	     'sexo': 'unisex',
-	     'cercania_tec': '2.1',
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/technics/'},
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	]},
-	    {'id': '3',
-	     'titulo': 'Primeros ingresos',
-	     'calificacion': '1',
-	     'area': '320',
-	     'habitaciones': '4',
-	     'sexo': 'female',
-	     'cercania_tec': '7.2',
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	]},
-	  ];
+	console.log(root + "/misapartas/"+ $localStorage.user._id);
+	$http({method: 'GET', url: root + "/misapartas/"+ $localStorage.user._id,
+			headers:{ 'Accept':'*/*'}
+			}).
+				success(function(data, status, headers, config) {
+					console.log("POST Sucess "+JSON.stringify(data));
+					$scope.results = data;
+					for ( var i=0 ; i < $scope.results.length ; i++ ){
+						$scope.results[i].fotos = [];
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_uno} );
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_dos} );
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_tres} );
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_cuatro} );
+					};
+				}).
+				error(function(data, status, headers, config) {
+					console.log("POST error");
+					console.log(status);
+					console.log(data);
+				});
   }]);
 
 
