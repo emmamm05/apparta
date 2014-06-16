@@ -67,12 +67,35 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$localStorage','$location',
             $scope.$apply(function() {
 				$scope.item.ubicacion_latitud 	=  position.coords.latitude;
 		    	$scope.item.ubicacion_longitud  =  position.coords.longitude;
+		    	// $scope.item.cercania_tec = getDistanceFromLatLonInKm(
+		    	// 	position.coords.latitude,position.coords.longitude,
+		    	// 	9.855756503226328,-83.91060333698988
+		    	// );
+            	$scope.item.cercania_tec = 5;
             });
         }, function(error) {
             	$scope.$apply(function() {
                 $scope.error = error;
             });
         }, {});  
+
+ 	function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+	  var R = 6371; // Radius of the earth in km
+	  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+	  var dLon = deg2rad(lon2-lon1); 
+	  var a = 
+	    Math.sin(dLat/2) * Math.sin(dLat/2) +
+	    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+	    Math.sin(dLon/2) * Math.sin(dLon/2)
+	    ; 
+	  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	  var d = R * c; // Distance in km
+	  return d;
+	}
+
+	function deg2rad(deg) {
+	  return deg * (Math.PI/180)
+	}
 
  	$scope.markers = [{
 		id: 1,
@@ -121,6 +144,7 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$localStorage','$location',
   		$scope.item.foto_dos    = $scope.item.fotos[1].src;
   		$scope.item.foto_tres   = $scope.item.fotos[2].src;
   		$scope.item.foto_cuatro = $scope.item.fotos[3].src;
+  		$scope.item.cercania_tec = 1.8;
 
         $http({method: 'POST', url: "http://apparta.herokuapp.com/api/apartamentos/"+$localStorage.user._id,
 		headers:{ 'Accept':'*/*'},
