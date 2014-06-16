@@ -9,7 +9,11 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location'
   function($rootScope, $scope, $routeParams, $location, $localStorage, $timeout, OpenFB, toaster) {
 	$rootScope.location = $location.path();
 	$rootScope.isLogged = $localStorage.isLogged || false;
-	$rootScope.es_anunciante = $localStorage.user.es_anunciante || false;
+	if($localStorage.user != null){
+		$rootScope.es_anunciante = $localStorage.user.es_anunciante
+	}else {
+		$rootScope.es_anunciante = false;
+	}
 	$scope.location = $location;
 	if($rootScope.isLogged){
 		$location.path('/home');
