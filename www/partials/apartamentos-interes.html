@@ -11,7 +11,7 @@
 		<div class="col-xs-12 apartas-list">
     	
         <!-- item -->
-            <div class="apartas-item col-sm-6" ng-repeat="item in results | orderBy:order:reverse">
+            <div class="apartas-item col-sm-12" ng-repeat="item in results | orderBy:order:reverse">
                 <div class="media">
                     <div class="col-xs-4 col-lg-5"><a href="#/ver-apartamento/{{item.id}}">
                     	<img class="img-list-apartas"  src="{{item.fotos[0].src}}" /></a>
@@ -46,8 +46,8 @@
     Si se desuscribe perder&aacute; contacto con otros interesados.
   </p>
   <p toggle="off" bubble target="overlay-delete">
-    <a href="#" class="btn btn-primary">Eliminar</a>
-    <a href="#" class="btn btn-default">Cancelar</a>
+    <a href="" class="btn btn-primary">Eliminar</a>
+    <a href="" class="btn btn-default">Cancelar</a>
   </p>  
 </div>
 

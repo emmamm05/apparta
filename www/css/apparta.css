@@ -47,6 +47,13 @@
     background-color: #ddd;
     border-color: #bbb;
 }
+.sidebar-left {
+    background-color: #000012;
+}
+
+.sidebar-left img {
+    margin-top: 1%;
+}
 
 /*
  * 

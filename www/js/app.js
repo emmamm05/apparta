@@ -143,7 +143,7 @@ app.directive('profile', function () {
     return {
       restrict: 'A',
       template: '<div class="col-xs-12 profile">'+
-			'<img 	src="http://graph.facebook.com/{{user.oauth_id}}/picture"'+ 
+			'<img src="http://graph.facebook.com/{{user.oauth_id}}/picture"'+ 
 				'class="img-circle center-block img-responsive col-xs-6 col-sm-4 col-md-6 ">'+
 			'</img>'+		
 			'<h2 class="text-center">{{user.nombre+" "+user.apellido}}</h2>'+
@@ -153,10 +153,10 @@ app.directive('profile', function () {
 						'class="btn btn-block btn-social btn-facebook">'+
 						'<i class="icon-facebook"></i> Ver perfil'+
 					'</div>'+
-					'<a class="btn btn-block btn-social btn-phone" ng-href="tel:{{user.telefono}}" >'+
+					'<a ng-if="user.telefono" class="btn btn-block btn-social btn-phone" ng-href="tel:{{user.telefono}}" >'+
 						'<i class="icon-phone" ></i> Llamar'+
 					'</a>'+
-					'<a class="btn btn-block btn-social btn-info"'+ 
+					'<a ng-if="user.telefono" class="btn btn-block btn-social btn-info"'+ 
 						'ng-href="sms:{{user.telefono}}?body=Hola, vi su anuncio en Apparta y me interesa'+ 
 						'obtener más información del aparmentamento.">'+
 						'<i class="icon-mail"></i> Mensaje de texto'+

@@ -28,7 +28,7 @@
 
   <div yield-to="sidebar-right" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebar"></div>
 
-  <div class="app">
+  <div class="app"  ng-swipe-left="toggle('mainSidebar', 'off')" ng-swipe-right="toggle('mainSidebar', 'on')">
     <!-- Navbar -->
     <div  ng-if="$root.isLogged" class="navbar navbar-app navbar-absolute-top">
 

@@ -7,6 +7,7 @@ app.controller('UsuariosCtrl', ['$scope', '$routeParams',
 
 app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage', '$timeout', 'OpenFB','toaster',
   function($rootScope, $scope, $routeParams, $location, $localStorage, $timeout, OpenFB, toaster) {
+	$rootScope.location = $location.path();
 	$rootScope.isLogged = $localStorage.isLogged || false;
 	$scope.location = $location;
 	if($rootScope.isLogged){
@@ -200,8 +201,7 @@ app.controller('BuscarUsuarioCtrl', ['$scope', '$routeParams',
 		nombre: 	'Bairon',
 		apellido: 	'Perez',
 		oauth_id: 	'1763484990',
-		oauth_proveedor: 'facebook',
-		telefono:	 '8888-1234'},
+		oauth_proveedor: 'facebook'},
 	    {	id: 		'2',
 		nombre: 	'Karla',
 		apellido: 	'Madrigal',
