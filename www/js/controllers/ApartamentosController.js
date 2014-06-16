@@ -198,126 +198,27 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams','ApartamentosService'
 
 app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
-	$scope.results = [
-	    {'id': '1',
-	     'titulo': 'Barato y espacioso',
-	     'calificacion': '3',
-	     'area': '220',
-	     'habitaciones': '5',
-	     'sexo': 'male',
-	     'cercania_tec': '1.8', 
-	     'mensualidad': 150000, 
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/city/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	],
-	     'interesados':[
-		    {	id: 		'1',
-			nombre: 	'Bairon',
-			apellido: 	'Perez',
-			oauth_id: 	'1763484990',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'2',
-			nombre: 	'Karla',
-			apellido: 	'Madrigal',
-			oauth_id: 	'100001429851672',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'1',
-			nombre: 	'Bairon',
-			apellido: 	'Perez',
-			oauth_id: 	'1763484990',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'2',
-			nombre: 	'Karla',
-			apellido: 	'Madrigal',
-			oauth_id: 	'100001429851672',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'3',
-			nombre: 	'Emmanuel',
-			apellido: 	'Mora',
-			oauth_id: 	'1287630773',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'}
-		  ]},
-	    {'id': '2',
-	     'titulo': 'Oferta!!',
-	     'calificacion': '5',
-	     'area': '220',
-	     'habitaciones': '3',
-	     'sexo': 'unisex',
-	     'cercania_tec': '2.1',
-	     'mensualidad': 70000, 
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/technics/'},
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	],
-	     'interesados':[
-		    {	id: 		'2',
-			nombre: 	'Karla',
-			apellido: 	'Madrigal',
-			oauth_id: 	'100001429851672',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'3',
-			nombre: 	'Emmanuel',
-			apellido: 	'Mora',
-			oauth_id: 	'1287630773',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'}
-		  ]},
-	    {'id': '3',
-	     'titulo': 'Primeros ingresos',
-	     'calificacion': '1',
-	     'area': '320',
-	     'habitaciones': '4',
-	     'sexo': 'female',
-	     'cercania_tec': '7.2',
-	     'mensualidad': 320000, 
-	     'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at lectus ligula. Nunc massa nisl, accumsan nec molestie eu.',
-	     'fotos':[
-			{src: 'http://lorempixel.com/250/200/transport/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/abstract/'},
-			{src: 'http://lorempixel.com/250/200/technics/'}
-		    	],
-	     'interesados':[
-		    {	id: 		'1',
-			nombre: 	'Bairon',
-			apellido: 	'Perez',
-			oauth_id: 	'1763484990',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'2',
-			nombre: 	'Karla',
-			apellido: 	'Madrigal',
-			oauth_id: 	'100001429851672',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'1',
-			nombre: 	'Bairon',
-			apellido: 	'Perez',
-			oauth_id: 	'1763484990',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'},
-		    {	id: 		'2',
-			nombre: 	'Karla',
-			apellido: 	'Madrigal',
-			oauth_id: 	'100001429851672',
-			oauth_proveedor: 'facebook',
-			telefono:	 '8888-1234'}
-		  ]},
-	  ];
+	$scope.results = [];
 
+	$http({method: 'GET', url: root + "/interesados/"+ $localStorage.user._id,
+			headers:{ 'Accept':'*/*'}
+			}).
+				success(function(data, status, headers, config) {
+					console.log("POST Sucess "+JSON.stringify(data));
+					$scope.results = data;
+					for ( var i=0 ; i < $scope.results.length ; i++ ){
+						$scope.results[i].fotos = [];
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_uno} );
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_dos} );
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_tres} );
+						$scope.results[i].fotos.push( {src:$scope.results[i].foto_cuatro} );
+					};
+				}).
+				error(function(data, status, headers, config) {
+					console.log("POST error");
+					console.log(status);
+					console.log(data);
+				});
 
 	$scope.order = 'calificacion';
 	$scope.reverse = true;
@@ -329,8 +230,8 @@ app.controller('ApartamentosInteresCtrl', ['$scope', '$routeParams',
   }]);
 
 
-app.controller('VerApartamentoCtrl', ['$scope', '$routeParams','$http','$localStorage',
-  function($scope, $routeParams,$http,$localStorage) {
+app.controller('VerApartamentoCtrl', ['$scope', '$routeParams','$http','$localStorage','toaster',
+  function($scope, $routeParams,$http,$localStorage,toaster) {
      console.log($routeParams.id);
      $scope.item = "";
      $http({method: 'GET', url: root + "/apartamentos/"+$routeParams.id,
@@ -379,7 +280,19 @@ app.controller('VerApartamentoCtrl', ['$scope', '$routeParams','$http','$localSt
     };
 
     $scope.add_interes = function(){
-
+    	$http({method: 'PUT', url: root + "/apartamentos/"+$routeParams.id,
+			headers:{ 'Accept':'*/*'},
+			data: { usuario_id:$localStorage.user._id, aparta_id:$scope.item._id } }).
+				success(function(data, status, headers, config) {
+					console.log("POST Sucess "+data);
+        			toaster.pop('success', "Genial!", 'Se han guardado los cambios', null, 'trustedHtml');					
+				}).
+				error(function(data, status, headers, config) {
+					console.log("POST error");
+        			toaster.pop('error', "Oops, algo ha sucedido, contacte a emma", null, 'trustedHtml');
+					console.log(status);
+					console.log(data);
+				});
     };
 
 
