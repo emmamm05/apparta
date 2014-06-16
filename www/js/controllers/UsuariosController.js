@@ -1,3 +1,30 @@
+var root = "http://apparta.herokuapp.com/api";
+
+app.service('LoginAPI',['$http','$location','$localStorage',function($http,$location,$localStorage){
+	var userId;
+	this.login = function(user){		
+		console.log("LoginAPI --------------");
+		$http({method: 'POST', url: root + "/usuarios",
+		headers:{ 'Accept':'*/*'},
+		data: user }).
+			success(function(data, status, headers, config) {
+				console.log("dataLoginAPI//"+JSON.stringify(data[0]["_id"]));
+				userId = data[0]["_id"];
+				$localStorage.isLogged 	= true;
+				$localStorage.user = data[0];
+				$localStorage.user._id = userId;
+				console.log("dataLoginAPI "+$localStorage.user);		
+				$location.path('/home');
+			}).
+			error(function(data, status, headers, config) {
+				console.log("Error LoginAPI");
+			});
+	};
+	this.getUserId = function(){
+		return userId;
+	};
+}]);
+
 app.controller('UsuariosCtrl', ['$scope', '$routeParams',
   function($scope, $routeParams) {
       //Falta hay q hacer lo de facebook 
@@ -5,9 +32,8 @@ app.controller('UsuariosCtrl', ['$scope', '$routeParams',
   }]);
  
 
-app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage', '$timeout', 'OpenFB','toaster',
-  function($rootScope, $scope, $routeParams, $location, $localStorage, $timeout, OpenFB, toaster) {
-	$rootScope.location = $location.path();
+app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$localStorage', '$timeout', 'OpenFB','toaster','LoginAPI',
+  function($rootScope, $scope, $routeParams, $location, $localStorage, $timeout, OpenFB, toaster,LoginAPI) {
 	$rootScope.isLogged = $localStorage.isLogged || false;
 	if($localStorage.user != null){
 		$rootScope.es_anunciante = $localStorage.user.es_anunciante
@@ -22,11 +48,9 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$routeParams', '$location'
       	$scope.login = function () {
 		//TODO: llamar al backend para solicitar id
 		$rootScope.isLogged 	= true;
-		$localStorage.isLogged 	= true;
-		$localStorage.user 	= $scope.user;
-		$rootScope.es_anunciante = $scope.user.es_anunciante;
-		toaster.pop('success', 'Hola '+$localStorage.user.nombre+',', 'Bienvenido a Apparta!', 10000, 'trustedHtml');
-		$location.path('/home');
+		LoginAPI.login($scope.user);
+		toaster.pop('success', 'Hola '+$scope.user.nombre+',', 'Bienvenido a Apparta!', 10000, 'trustedHtml');
+
 	};
 	
         $scope.facebookLogin = function () {

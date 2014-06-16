@@ -32,22 +32,23 @@ app.controller('ApartamentoCtrl', ['$scope', '$routeParams',
   }]);
  
 
-app.controller('AgregarApartamentoCtrl', ['$scope', '$location', 'geolocation', 'camera', '$routeParams', '$http','toaster',
-  function( $scope, $location, geolocation, camera, $routeParams, $http, toaster ) {
+app.controller('AgregarApartamentoCtrl', ['$scope', '$localStorage','$location', 'geolocation', 'camera', '$routeParams', '$http','toaster',
+  function( $scope, $localStorage ,$location, geolocation, camera, $routeParams, $http, toaster ) {
 
-    $scope.item = {	genero: 'unisex',
-    				opcion_agua: false,
-    				opcion_electricidad: false,
-    				opcion_internet: false,
-    				opcion_seguridad: false,
-    				ubicacion_latitud: 9.855756503226328,
-    				ubicacion_longitud: 83.91060333698988,
-    				fotos:[
-						{src: 'img/add_img.png'},
-						{src: 'img/add_img.png'},
-						{src: 'img/add_img.png'},
-						{src: 'img/add_img.png'}
-			    	]
+    $scope.item = {	
+    		genero: 'unisex',
+			opcion_agua: false,
+			opcion_electricidad: false,
+			opcion_internet: false,
+			opcion_seguridad: false,
+			ubicacion_latitud: 9.855756503226328,
+			ubicacion_longitud: 83.91060333698988,
+			fotos:[
+					{src: 'img/add_img.png'},
+					{src: 'img/add_img.png'},
+					{src: 'img/add_img.png'},
+					{src: 'img/add_img.png'}
+			]
     };
 
 	$scope.map = {
@@ -114,10 +115,17 @@ app.controller('AgregarApartamentoCtrl', ['$scope', '$location', 'geolocation', 
 			});
 	}
     $scope.crearAparta = function(){
-      	console.debug(JSON.stringify($scope.item));
-        $http({method: 'POST', url: "http://localhost:8080/api/apartamentos",
+      	console.debug(JSON.stringify($scope.item)+ JSON.stringify($localStorage.user));
+      	//PATCH imagenes
+  		$scope.item.foto_uno    = $scope.item.fotos[0].src;
+  		$scope.item.foto_dos    = $scope.item.fotos[1].src;
+  		$scope.item.foto_tres   = $scope.item.fotos[2].src;
+  		$scope.item.foto_cuatro = $scope.item.fotos[3].src;
+
+        $http({method: 'POST', url: "http://apparta.herokuapp.com/api/apartamentos/"+$localStorage.user._id,
 		headers:{ 'Accept':'*/*'},
-		data: $scope.item }).
+		data: $scope.item
+		}).
 		success(function(data, status, headers, config) {
 		  console.log("POST Sucess");
 		  toaster.pop('success', "Genial!", 'Se han guardado los cambios', null, 'trustedHtml');
@@ -155,6 +163,13 @@ app.controller('ResultadosCtrl', ['$scope', '$routeParams','ApartamentosService'
 	$scope.reverse = true;
 	console.log('results: '+JSON.stringify(ApartamentosService.getResults()));
 	$scope.results = ApartamentosService.getResults();
+	for ( var i=0 ; i < $scope.results.length ; i++ ){
+		$scope.results[i].fotos = [];
+		$scope.results[i].fotos.push( {src:$scope.results[i].foto_uno} );
+		$scope.results[i].fotos.push( {src:$scope.results[i].foto_dos} );
+		$scope.results[i].fotos.push( {src:$scope.results[i].foto_tres} );
+		$scope.results[i].fotos.push( {src:$scope.results[i].foto_cuatro} );
+	};
   }]);
 
 
