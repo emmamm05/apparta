@@ -13,12 +13,12 @@
         <!-- item -->
             <div class="apartas-item col-sm-6" ng-repeat="item in results | orderBy:order:reverse">
                 <div class="media">
-                    <div class="col-xs-4 col-lg-5"><a href="#/ver-apartamento/{{item.id}}">
+                    <div class="col-xs-4 col-lg-5"><a href="#/ver-apartamento/{{item._id}}">
                     	<img class="img-list-apartas"  src="{{item.fotos[0].src}}" /></a>
                     </div>
                     <div class="media-body col-xs-8 col-lg-7">
                         <h4 class="media-heading">
-                        	<a href="#/ver-apartamento/{{item.id}}" target="_parent">{{item.titulo}}</a> 
+                        	<a href="#/ver-apartamento/{{item._id}}" target="_parent">{{item.titulo}}</a> 
                         </h4>
                         <ul class="list-inline">
                             <li><i class="icon-bethroom"></i>{{item.habitaciones}}</li>
